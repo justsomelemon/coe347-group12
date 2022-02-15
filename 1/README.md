@@ -35,5 +35,5 @@
  - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file! 
 
  # Output
- - The pdf is linked ![here](/1/pdf/article.pdf). A HTML version is available below.
+ - The pdf is linked ![here](/1/pdf/article.pdf). A HTML version is available below.  
  ![](/1/pdf/article.html)
