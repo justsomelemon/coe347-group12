@@ -36,4 +36,4 @@
 
  # Output
  - The pdf is linked ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.pdf). A HTML version is available ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html), and below.  
- <embed src="https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html?raw=true"></embed>
+ <embed src="https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html?raw=true" width=100% height=100%></embed>
