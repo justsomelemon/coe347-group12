@@ -35,10 +35,12 @@
  - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file! 
 # Output  
  - PDF and HTML versions are linked here.  
- 
- ![pdf](https://akhilsadam.github.io/coe347-group12/1/pdf/article.pdf)  
- 
- ![html](https://akhilsadam.github.io/coe347-group12/1/pdf/article.html)  
+
+HTML : https://akhilsadam.github.io/coe347-group12/1/pdf/article.html  
+
+PDF (righ-click and save as): https://akhilsadam.github.io/coe347-group12/1/pdf/article.pdf  
+
+
 
 
 
