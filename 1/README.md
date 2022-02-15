@@ -33,10 +33,10 @@
  - generated plots from the simulation and analysis  
 - markdown  
  - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file! 
-
- # Output  
- - The pdf is linked ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.pdf). A HTML version is available ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html), and below.  
+# Output  
+ - PDF and HTML versions are linked here.
+ https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.pdf
+ https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html  
 
  <embed src="https://raw.githubusercontent.com/akhilsadam/coe347-group12/main/1/pdf/article.html" width=100% height=100%></embed>  
 
- 
