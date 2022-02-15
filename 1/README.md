@@ -38,7 +38,7 @@
 
 HTML : https://akhilsadam.github.io/coe347-group12/1/pdf/article.html  
 
-PDF (righ-click and save as): https://akhilsadam.github.io/coe347-group12/1/pdf/article.pdf  
+PDF : https://akhilsadam.github.io/coe347-group12/1/pdf/article.pdf  
 
 
 
