@@ -1,0 +1,14 @@
+title: "OpenFoam Assignment | The Lid-Driven Cavity"
+authors:
+  - name: Akhil Sadam
+    address: Aerospace Department, University of Texas at Austin
+    email: akhil.sadam@utexas.edu
+  - name: Archithaa Mohan
+    address: Aerospace Department, University of Texas at Austin
+    email: archithaamohan@utexas.edu
+  - name: Long H. Vu
+    address: Aerospace Department, University of Texas at Austin
+    email: --@-
+keywords: [computational fluid dynamics, CFD, incompressible, Paraview, R, Python, coe347, spring 2022]
+abstract: |
+  --SAMPLE ABSTRACT--

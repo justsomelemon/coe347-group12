@@ -26,8 +26,10 @@
 ```
 - generate
  - contains a script and R files to stitch together plots from R Markdown from `markdown/` into the `pdf/` output directory.
- - you should NOT need to edit this file once I have created it, just run the `generate.sh` script.
+ - you should NOT need to edit this file once I have created it, just run the `generate.sh` script, via `bash generate.sh -c`.
 - pdf
  - output directory, do not edit anything here
 - plots
  - generated plots from the simulation and analysis
+- markdown
+ - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file!
