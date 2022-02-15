@@ -35,5 +35,5 @@
  - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file! 
 
  # Output
- - The pdf is linked ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.pdf). A HTML version is available below.  
- ![](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html?raw=true)
+ - The pdf is linked ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.pdf). A HTML version is available ![here](https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html), and below.  
+ <embed src="https://github.com/akhilsadam/coe347-group12/tree/main/1/pdf/article.html?raw=true"></embed>
