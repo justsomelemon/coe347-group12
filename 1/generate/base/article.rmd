@@ -42,7 +42,9 @@ imshow <- function(imgname)
   rasterImage(jj,0,0,1,1) 
 }
 ```
-
+  
+# Some Text {.chapter}  
+  
 {CONTENT-REPLACE}
 
 ```{=html}
