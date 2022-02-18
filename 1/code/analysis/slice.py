@@ -1,7 +1,9 @@
 from paraview.simple import *
+import paraview.servermanager as sm
 #### disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 import default
+import numpy as np
 
 def sliceXY(a_foam,renderView1,pLUT,uLUT,run,number):
     # create a new 'Slice'
@@ -45,7 +47,7 @@ def sliceXY(a_foam,renderView1,pLUT,uLUT,run,number):
 
     return slice1
 
-def velocityVectorPlot(slice1,renderView1,pLUT,run):
+def velocityXYPlot(slice1,renderView1,pLUT,run):
     # create a new 'Glyph'
     glyph1 = Glyph(Input=slice1,
         GlyphType='Arrow')
@@ -83,11 +85,32 @@ def velocityVectorPlot(slice1,renderView1,pLUT,run):
     del glyph1Display
     
 
-def velocityXContour(slice1,renderView1,pLUT,uLUT,run):
+def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
+    # info = sm.Fetch(slice1)
+
+    # #options for component: -1, 0, 1 and 2 => Mag, X, Y, Z
+    # component = -1
+    ids = ['','_X','_Y','_Z']
+    id2s = ['Magnitude','X','Y','Z']
+    id = ids[ax]
+    id2 = id2s[ax]
+    component = ax-1
+
+    # cdi = slice1.GetDataInformation().GetCompositeDataInformation()
+    # for i in range(cdi.GetNumberOfChildren()):
+    #     print 'Block Name: ', cdi.GetName(i)
+    #     data = cdi.GetDataInformation(i).GetCellDataInformation()
+    #     for j in range(data.GetNumberOfArrays()):
+    #         array = data.GetArrayInformation(j)
+    #         arrayName = array.GetName()
+    #         dataRange = array.GetComponentRange(component)
+    #         print arrayName, dataRange
+    ranges = slice1.PointData.GetArray("U").GetComponentRange(component)
+    # print(ranges)
     # create a new 'Contour'
     contour1 = Contour(Input=slice1)
-    contour1.ContourBy = ['POINTS', 'U_X']
-    contour1.Isosurfaces = [0.240919828414917]
+    contour1.ContourBy = ['POINTS', 'U'+id]
+    contour1.Isosurfaces = np.linspace(ranges[0],ranges[1],n).tolist()
     contour1.PointMergeMethod = 'Uniform Binning'
     # get color transfer function/color map for 'p'
     pLUT = GetColorTransferFunction('p')
@@ -100,7 +123,7 @@ def velocityXContour(slice1,renderView1,pLUT,uLUT,run):
     # update the view to ensure updated data information
     renderView1.Update()
     # set scalar coloring
-    ColorBy(contour1Display, ('CELLS', 'U', 'X'))
+    ColorBy(contour1Display, ('CELLS', 'U', id2))
     # Hide the scalar bar for this color map if no visible data is colored by it.
     HideScalarBarIfNotNeeded(pLUT, renderView1)
     # rescale color and/or opacity maps used to include current data range
@@ -108,4 +131,10 @@ def velocityXContour(slice1,renderView1,pLUT,uLUT,run):
     # show color bar/color legend
     contour1Display.SetScalarBarVisibility(renderView1, True)
     UpdateScalarBarsComponentTitle(uLUT, contour1Display)
-    default.plot(run,"U-X_contour",renderView1)
+    default.plot(run,"U-"+id2+"_contour",renderView1)
+
+    Delete(contour1)
+    del contour1
+    contour1Display.SetScalarBarVisibility(renderView1, False)
+    Delete(contour1Display)
+    del contour1Display

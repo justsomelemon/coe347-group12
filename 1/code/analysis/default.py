@@ -129,8 +129,10 @@ if __name__ == '__main__':
 
         import slice
         slice1 = slice.sliceXY(a_foam,renderView1,pLUT,uLUT,run,"U-glyphs")
-        slice.velocityVectorPlot(slice1,renderView1,pLUT,run)
-        slice.velocityXContour(slice1,renderView1,pLUT,uLUT,run)
+        slice.velocityXYPlot(slice1,renderView1,pLUT,run)
+        slice.velocityXYContour(slice1,renderView1,pLUT,uLUT,run)
+        slice.velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=2)
+        slice.velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=0)
 
     runs = [f.name for f in scandir.scandir(datapath)]
     for run in runs:
