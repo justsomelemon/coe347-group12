@@ -33,6 +33,17 @@
  - generated plots from the simulation and analysis  
 - markdown  
  - contains individual files for each section, numbered `1,2,...`. Please edit your email address into the Header.rmd file! 
+
+# Install & Dependencies  
+ 
+- `openFoam` (7-9)
+- `Paraview`
+- `Python 2` (unfortunately pvpython seems to only work with python2...)
+- `pip install scandir` (and `os`, `sys`, which are default packages and need not be installed!)
+- `R >= 4.0.3`
+- some R packages: `magick, jpeg, R.utils, animation, pagedown, bookdown`  
+- `RStudio`  
+
 # Output  
  - PDF and HTML versions are linked here.  
 
