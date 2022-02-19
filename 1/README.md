@@ -40,12 +40,16 @@
 - `Paraview` with `pvpython` (`pvpython` should automatically be installed)
 - `pip install --user numpy scandir` (and `os`, `sys`, which are default packages and need not be installed!)
 - `Python 3` (via `module load python3`)
-- `pip3 install --user numpy matplotlib jpcm` (and `os`, `sys`, which are default packages and need not be installed!)
+- `pip3 install --user numpy matplotlib jpcm scipy` (and `os`, `sys`, `re`, which are default packages and need not be installed!)
 - `R >= 4.0.3` (via `module load R`)
 - some R packages: `magick, jpeg, R.utils, animation, pagedown, bookdown`  
   
-  
-- `RStudio` (optional)
+
+- `RStudio` (optional)  
+
+## to install  
+- please just clone the repository; at present there is no deployment.  
+- in the future we *may* use Docker if absolutely necessary
 
 # Output  
  - PDF and HTML versions are linked here.  

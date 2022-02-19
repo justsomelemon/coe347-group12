@@ -20,7 +20,7 @@ do
     echo "-\ Allclean"
     ./Allclean
     echo "-\ Allrun"
-    time ./Allrun
+    { time ./Allrun 2>> time.txt ; } 
     echo "-\ Simulation Complete."
     echo "-\ Post-processing via Sample..."
     postProcess -func sample
@@ -36,7 +36,7 @@ do
     echo "-\ Sweeping Dirt ..."
     # ./Allclean
     rm -r system/
-    rm README.txt
+    rm README.md
     rm sets.txt
     echo "-\ CD"
     cd ../data/"$run"/
@@ -44,6 +44,12 @@ do
     touch _.foam
     echo "-\ CD"
     cd ../../param/
-    echo "-/| DONE"
+    echo "-/| DONE |"
 done
+echo "-\| TIMING Data |"
+mkdir -p ../data/time/
+mv ../sim/time.txt ../data/time/
+echo "  | CD |"
+cd ../
+echo "-/| DONE RUNNING---------------=||= - - -\\\\"
     

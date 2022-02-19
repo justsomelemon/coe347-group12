@@ -1,8 +1,8 @@
 from utils import *
 from paraview.simple import *
-import os
 import scandir
 import sys
+import re
 sys.path.append("/usr/lib/paraview/site-packages")
 # sys.path.append('/usr/lib/paraview')
 # import the simple module from the paraview
@@ -136,7 +136,11 @@ if __name__ == '__main__':
         slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=1)
         slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=2)
 
-    runs = [f.name for f in scandir.scandir(datapath)]
+    allruns = [f.name for f in scandir.scandir(datapath)]
+    runs = []
+    for run in allruns:
+        if not re.search('[a-zA-Z]', run):
+            runs.append(run)
     for run in runs:
         print("Plotting for Run {}".format(run))
         runDefaultProcessing(run)

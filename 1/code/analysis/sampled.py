@@ -1,4 +1,5 @@
 #!usr/bin/python3
+import re
 from matplotlib import pyplot as plt
 import numpy as np
 import os
@@ -47,7 +48,8 @@ def plotS(run, folder, name, path, ax=1, axV=0):
     plt.close()
 
 
-runs = [f.name for f in os.scandir(datapath)]
+allruns = [f.name for f in os.scandir(datapath)]
+runs = [run for run in allruns if not re.search('[a-zA-Z]', run)]
 for run in runs:
     print("Plotting Samples for Run {}".format(run))
     for loc in paths(run):

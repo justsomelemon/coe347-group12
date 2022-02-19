@@ -10,3 +10,5 @@ echo "Analyzing Samples With PARAVIEW:"
 pvpython default.py
 echo "Analyzing Samples With MATPLOTLIB:"
 python3 sampled.py
+python3 time.py
+cd ..
