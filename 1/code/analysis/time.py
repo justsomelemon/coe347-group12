@@ -7,7 +7,7 @@ from scipy.optimize import curve_fit
 from utils import *
 
 tmfile = f'{datapath}time/time.txt'
-plotfile = f'{plotdir}time.png'
+plotfile = f'{plotdir}time.jpg'
 
 T = 0.5
 deltaT = np.array([0.005, 0.0025, 0.00125, 0.000625])

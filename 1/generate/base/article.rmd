@@ -36,6 +36,7 @@ print(paste("OUT Directory:",outdir))
 
 imshow <- function(imgname)
 {
+  fig.dim = c(0.75, 1)
   jj <- readJPEG(paste(imgdir,"/",imgname,sep=""),native=TRUE)
   par(mar=c(0,0,0,0),xaxs = 'i',yaxs='i')
   plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)

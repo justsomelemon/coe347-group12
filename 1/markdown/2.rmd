@@ -1,0 +1,56 @@
+# Description of the flow for Re = 10 {.chapter}  
+
+Following is the solution to the lid-driven cavity with lid velocity $U_0=1\frac{m}{s}$ to the right, a characteristic length $L=0.1m$, and kinematic viscosity $\nu=\frac{\mu}{\rho}=0.01\frac{m^2}{s}$, yielding a Reynolds number of $Re=\frac{UL}{\nu}=10$. Note the upper plane ($y=0.1m$) represents the moving lid.  
+Please note that all output variables have been nondimensionalized to allow for easier comparision. So we report $\pi=\frac{P}{\rho}$ pressure, and $\tilde{u}=\frac{U}{U_0}$, $\tilde{v}=\frac{V}{U_0}$.  
+
+Contour plots for the X and Y components of fluid velocity:  
+
+```{r}
+imshow("1/1_U-X_contour.jpg")
+imshow("1/1_U-Y_contour.jpg")
+```  
+
+A streamline plot, and a glyph-based plot to show velocity direction:
+
+```{r}
+imshow("1/1_U-Y_contour.jpg")
+imshow("1/1_U-glyphs.jpg")
+```
+
+A pressure and velocity profile sampled along the midline: $\tilde{x}=0.5$, in component form. Respectively, $\pi(\tilde{x}=0.5,\tilde{y})$, $\tilde{u}(\tilde{x}=0.5,\tilde{y})$, $\tilde{v}(\tilde{x}=0.5,\tilde{y})$.  
+
+```{r}
+imshow("1/0.5/midline_P.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+# Refining the solution {.chapter}  
+
+We will demonstrate the increase in image fidelity due to finer discretization. The earlier midline velocity profiles: $\tilde{u}(\tilde{x}=0.5,\tilde{y})$, $\tilde{v}(\tilde{x}=0.5,\tilde{y})$ are successively halved in binwidth (grid size) in all directions: x, y, and t, for comparision.
+
+```{r}
+imshow("1/0.5/midline_U.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("2/0.5/midline_U.xy_X vs Y.jpg")
+imshow("2/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("3/0.5/midline_U.xy_X vs Y.jpg")
+imshow("3/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("4/0.5/midline_U.xy_X vs Y.jpg")
+imshow("4/0.5/midline_U.xy_Y vs Y.jpg")
+```
+  
+```{r}
+imshow("time.jpg")
+```
+
+

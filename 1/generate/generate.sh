@@ -155,6 +155,9 @@ if [ "$rlang" = true ] ; then
 	cd $src
 	mv $rstudio/article.html $output/article.html
 	cp $rstudio/styling/*.jpg $output/
+	mv $rstudio/*.png $output/
+	mkdir $output/article_files/
+	cp -r $rstudio/article_files/ $output/article_files/
 	mv $rstudio/article.css $output/article.css
 	mv $rstudio/article.pdf $output/article.pdf
 fi
