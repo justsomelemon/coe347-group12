@@ -25,14 +25,14 @@ times = np.array([float(line.split('user')[0])
 C = times/step
 
 
-def f(x, a, b):
-    return b*np.power(x, a)
+def f(x, a, b, y):
+    return y + b*np.power(x, a)
 
 
 popt, pcov = curve_fit(f, N, C)
 
 x_fit = np.linspace(min(N), max(N), 100)
-y_fit = f(x_fit, popt[0], popt[1])
+y_fit = f(x_fit, popt[0], popt[1], popt[2])
 plt.loglog(N, C, c=jpcm.maps.ginshu, label='data')
 plt.loglog(x_fit, y_fit, c=jpcm.maps.rurikon,
            label='fit: exponent={}'.format(popt[0]))

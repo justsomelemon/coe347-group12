@@ -152,6 +152,14 @@ if [ "$rlang" = true ] ; then
 
 	cat styling/def.css >> article.css
 
+	if [ "$machine" = "MinGw" ] || [ "$machine" = "Cygwin" ] || [ "$machine" = "MSYS" ]; then
+ 		py base/replaceHTML.py
+ 	elif [ "$machine" = "Linux" ] ; then
+ 		python3 base/replaceHTML.py
+	else
+ 		python3 base/replaceHTML.py
+	fi
+
 	cd $src
 	mv $rstudio/article.html $output/article.html
 	cp $rstudio/styling/*.jpg $output/
