@@ -20,7 +20,7 @@
 ├── data
 ├── param
 │   └── 1
-│       └── README.txt
+│       └── README.md
 ├── run.sh
 └── sim
 ```  
@@ -36,13 +36,16 @@
 
 # Install & Dependencies  
  
-- `openFoam` (7-9)
-- `Paraview`
-- `Python 2` (unfortunately pvpython seems to only work with python2...)
-- `pip install scandir` (and `os`, `sys`, which are default packages and need not be installed!)
-- `R >= 4.0.3`
+- `openFoam` (7-9) (via `module load openfoam`)
+- `Paraview` with `pvpython` (`pvpython` should automatically be installed)
+- `pip install --user numpy scandir` (and `os`, `sys`, which are default packages and need not be installed!)
+- `Python 3` (via `module load python3`)
+- `pip3 install --user numpy matplotlib jpcm` (and `os`, `sys`, which are default packages and need not be installed!)
+- `R >= 4.0.3` (via `module load R`)
 - some R packages: `magick, jpeg, R.utils, animation, pagedown, bookdown`  
-- `RStudio`  
+  
+  
+- `RStudio` (optional)
 
 # Output  
  - PDF and HTML versions are linked here.  

@@ -5,4 +5,8 @@
 # 1) analyze data from data/{i}/
 # 2) save output to ../plots/{i}/
 
-#TODO
+cd analysis
+echo "Analyzing Samples With PARAVIEW:"
+pvpython default.py
+echo "Analyzing Samples With MATPLOTLIB:"
+python3 sampled.py

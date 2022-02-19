@@ -83,7 +83,6 @@ def velocityXYPlot(slice1,renderView1,pLUT,run):
     glyph1Display.SetScalarBarVisibility(renderView1, False)
     Delete(glyph1Display)
     del glyph1Display
-    
 
 def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
     # info = sm.Fetch(slice1)
@@ -138,3 +137,64 @@ def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
     contour1Display.SetScalarBarVisibility(renderView1, False)
     Delete(contour1Display)
     del contour1Display
+
+def velocityXYStream(a_foam,renderView1,pLUT,uLUT,run,ax=0,n=21):
+    ids = ['','_X','_Y','_Z']
+    id2s = ['Magnitude','X','Y','Z']
+    id = ids[ax]
+    id2 = id2s[ax]
+    component = ax-1
+
+    # create a new 'Stream Tracer'
+    streamTracer1 = StreamTracer(Input=a_foam,
+        SeedType='High Resolution Line Source')
+    # Properties modified on streamTracer1.SeedType
+    streamTracer1.SeedType.Resolution = 100
+    # Properties modified on streamTracer1
+    streamTracer1.MaximumStreamlineLength = 1.0
+    # show data in view
+    streamTracer1Display = Show(streamTracer1, renderView1)
+    # trace defaults for the display properties.
+    streamTracer1Display.Representation = 'Surface'
+    # hide data in view
+    Hide(a_foam, renderView1)
+    # show color bar/color legend
+    streamTracer1Display.SetScalarBarVisibility(renderView1, True)
+    # update the view to ensure updated data information
+    renderView1.Update()
+    # reset view to fit data
+    renderView1.ResetCamera()
+    # set scalar coloring
+    ColorBy(streamTracer1Display, ('POINTS', 'U', id2))
+    # Hide the scalar bar for this color map if no visible data is colored by it.
+    HideScalarBarIfNotNeeded(pLUT, renderView1)
+    # rescale color and/or opacity maps used to include current data range
+    streamTracer1Display.RescaleTransferFunctionToDataRange(True, False)
+    # show color bar/color legend
+    streamTracer1Display.SetScalarBarVisibility(renderView1, True)
+    # Properties modified on streamTracer1.SeedType
+    streamTracer1.SeedType.Point1 = [0.05, 0.0, 0.005]
+    streamTracer1.SeedType.Point2 = [0.05, 0.1, 0.005]
+    # update the view to ensure updated data information
+    renderView1.Update()
+    # Rescale transfer function
+    uLUT.RescaleTransferFunction(1.31913544397e-06, 1.0)
+    # get opacity transfer function/opacity map for 'U'
+    uPWF = GetOpacityTransferFunction('U')
+    # Rescale transfer function
+    uPWF.RescaleTransferFunction(1.31913544397e-06, 1.0)
+    # reset view to fit data
+    renderView1.ResetCamera()
+    # Properties modified on streamTracer1.SeedType
+    streamTracer1.SeedType.Resolution = n
+    # update the view to ensure updated data information
+    renderView1.Update()
+
+    default.plot(run,"U-"+id2+"_streamlines",renderView1)
+
+    # destroy streamTracer1
+    Delete(streamTracer1)
+    del streamTracer1
+    streamTracer1Display.SetScalarBarVisibility(renderView1, False)
+    Delete(streamTracer1Display)
+    del streamTracer1Display

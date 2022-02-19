@@ -1,0 +1,8 @@
+sets ( // line across y with fixed x
+    midline {
+        type lineCell;
+        axis xyz;
+        start ( 0.05 0 0.005);
+        end ( 0.05 1 0.005);
+    }
+);
