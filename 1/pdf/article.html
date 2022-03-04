@@ -1,3 +1,4 @@
+1
 <!DOCTYPE html> 
 <html> 
 <head> <title></title> 
@@ -7,381 +8,464 @@
 <script src='https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js'></script>  
 </head><body 
 >
-    <bkg><img src="bkg.jpg"></img></bkg><main> 
+   <bkg><img src="bkg.jpg"></img></bkg><main> 
 
-<!--l. 61--><p class="noindent" ><span 
-class="cmbx-12x-x-144">OpenFoam</span>
-<span 
-class="cmbx-12x-x-144">Assignment</span>
-<span 
-class="cmbsy-10x-x-172">|</span>
-<span 
-class="cmbx-12x-x-144">The</span>
-<span 
-class="cmbx-12x-x-144">Lid-Driven</span>
-<span 
-class="cmbx-12x-x-144">Cavity</span>
-              <span 
-class="cmbx-12">Akhil</span>
-              <span 
-class="cmbx-12">Sadam</span>
-              <span 
-class="cmr-10">Aerospace</span>
-              <span 
-class="cmr-10">Department,</span>
-              <span 
-class="cmr-10">University</span>
-              <span 
-class="cmr-10">of</span>
-              <span 
-class="cmr-10">Texas</span>
-              <span 
-class="cmr-10">at</span>
-              <span 
-class="cmr-10">Austin</span>
-              <span 
-class="cmr-10">E-mail:</span>
-              <a 
-href="mailto:akhil.sadam@utexas.edu" ><span 
-class="cmtt-10">akhil.sadam@utexas.edu</span></a>
-              <span 
-class="cmbx-12">Archithaa</span>
-              <span 
-class="cmbx-12">Mohan</span>
-              <span 
-class="cmr-10">Aerospace</span>
-                                                                                     
-                                                                                     
-              <span 
-class="cmr-10">Department,</span>
-              <span 
-class="cmr-10">University</span>
-              <span 
-class="cmr-10">of</span>
-              <span 
-class="cmr-10">Texas</span>
-              <span 
-class="cmr-10">at</span>
-              <span 
-class="cmr-10">Austin</span>
-              <span 
-class="cmr-10">E-mail:</span>
-              <a 
-href="mailto:archithaamohan@utexas.edu" ><span 
-class="cmtt-10">archithaamohan@utexas.edu</span></a>
-              <span 
-class="cmbx-12">Long</span>
-              <span 
-class="cmbx-12">H.</span>
-              <span 
-class="cmbx-12">Vu</span>
-              <span 
-class="cmr-10">Aerospace</span>
-              <span 
-class="cmr-10">Department,</span>
-              <span 
-class="cmr-10">University</span>
-              <span 
-class="cmr-10">of</span>
-              <span 
-class="cmr-10">Texas</span>
-              <span 
-class="cmr-10">at</span>
-              <span 
-class="cmr-10">Austin</span>
-              <span 
-class="cmr-10">E-mail:</span>
-              <span 
-class="cmtt-10">--@-</span>
-              <span 
-class="cmbx-10">Abstract.   </span><span 
-class="cmr-10">–SAMPLE ABSTRACT–</span>
-</p><!--l. 79--><p class="noindent" ><span 
-class="cmti-12">Keywords</span>: computational fluid dynamics, CFD, incompressible, Paraview, R, Python, coe347,
-spring 2022
-</p><!--l. 82--><p class="indent" >
-                                                                                     
-                                                                                     
-</p><!--l. 87--><p class="indent" >    <a 
- id="some-text"></a>
-<a 
- id="x1-2r1"></a>
-</p><!--l. 87--><p class="noindent" >
-<span 
-class="cmbx-12">1.</span>
-<span 
-class="cmbx-12">Some</span>
-<span 
-class="cmbx-12">Text</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 90--><p class="indent" >    <a 
- id="motivation"></a>
-<a 
- id="x1-3r2"></a>
-</p><!--l. 90--><p class="noindent" >
-<span 
-class="cmbx-12">2.</span>
-<span 
-class="cmbx-12">Motivation</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 92--><p class="indent" >    why cavity is important
-</p><!--l. 95--><p class="indent" >    <a 
+   <section role="doc-abstract" class="abstract"> 
+
+</p></section>
+</p>
+   <div class="maketitle">
+                                                                  
+
+                                                                  
+   <a 
+ id="x1-2f0"></a><span class="footnote-mark"><a 
+ id="fn0x1">   <sup class="textsuperscript"></sup></a></span><span 
+class="ec-lmri-8">Email addresses: </span><span 
+class="ec-lmtt-8">akhil.sadam@utexas.edu </span><span 
+class="ec-lmr-8">(Akhil Sadam | as97822), </span><span 
+class="ec-lmtt-8">archithaamohan@utexas.edu</span>
+   <span 
+class="ec-lmr-8">(Archithaa Mohan | am87867), </span><span 
+class="ec-lmtt-8">longvu@utexas.edu </span><span 
+class="ec-lmr-8">(Long H. Vu | lhv248)</span>
+
+<h2 class="titleHead">OpenFoam Assignment | The Lid-Driven Cavity</h2>
+Akhil Sadam | as97822<sup class="textsuperscript"></sup>, Archithaa Mohan | am87867<sup class="textsuperscript"></sup>, Long H. Vu | lhv248<sup class="textsuperscript"></sup>
+____
+<!--l. 105--><p class="noindent" ><span 
+class="ec-lmbx-10">Abstract</span>
+</p><!--l. 105--><p class="noindent" >–SAMPLE ABSTRACT–
+<!--l. 108--><p class="noindent" ><span 
+class="ec-lmri-10">Keywords:</span><span 
+class="ec-lmri-10"> </span>
+computational
+fluid
+dynamics
+CFD
+incompressible
+Paraview
+R
+Python
+coe347
+spring
+2022__________________________________________________________________________________________________
+</div>
+<!--l. 114--><p class="indent" >     <a 
  id="implementation"></a>
-<a 
- id="x1-4r3"></a>
-</p><!--l. 95--><p class="noindent" >
-<span 
-class="cmbx-12">3.</span>
-<span 
-class="cmbx-12">Implementation</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 97--><p class="indent" >    We implement all simulation with OpenFoam, analysis with Paraview and Python3 , and
-documentation code in R (<span 
-class="cmbx-12">???????</span>, <span 
-class="cmbx-12">?</span>,<span 
-class="cmbx-12">?</span>,<span 
-class="cmbx-12">?</span>).
-</p><!--l. 101--><p class="indent" >    – some text —
-</p><!--l. 105--><p class="indent" >    <a 
- id="description-of-the-flow-for-re-10"></a>
-<a 
- id="x1-5r4"></a>
-                                                                                     
-                                                                                     
-</p><!--l. 105--><p class="noindent" >
-<span 
-class="cmbx-12">4.</span>
-<span 
-class="cmbx-12">Description</span>
-<span 
-class="cmbx-12">of</span>
-<span 
-class="cmbx-12">the</span>
-<span 
-class="cmbx-12">flow</span>
-<span 
-class="cmbx-12">for</span>
-<span 
-class="cmbx-12">Re</span>
-<span 
-class="cmbx-12">=</span>
-<span 
-class="cmbx-12">10</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 107--><p class="indent" >    Following is the solution to the lid-driven cavity with lid velocity <img 
-src="article0x.png?raw=true" alt="U0 = 1 m-
-       s  "  class="math"  /> to the right,
-a characteristic length <img 
-src="article1x.png?raw=true" alt="L = 0.1m  "  class="math"  />, and kinematic viscosity <img 
-src="article2x.png?raw=true" alt="     μ       m2-
-ν =  ρ = 0.01 s  "  class="math"  />, yielding a
-Reynolds number of <img 
-src="article3x.png?raw=true" alt="Re =  UνL-= 10  "  class="math"  />. Note the upper plane (<img 
-src="article4x.png?raw=true" alt="y =  0.1m  "  class="math"  />) represents the
-moving lid.<br 
-class="newline" />Please note that all output variables have been nondimensionalized to allow for easier
-comparision. So we report <img 
-src="article5x.png?raw=true" alt="π =  Pρ-  "  class="math"  /> pressure, and <img 
-src="article6x.png?raw=true" alt="˜u =  UU0   "  class="math"  />, <img 
-src="article7x.png?raw=true" alt="v˜=  VU0   "  class="math"  />.<br 
-class="newline" />20 grid points in each axis were used.
-</p><!--l. 118--><p class="indent" >    Contour plots for the X and Y components of fluid velocity, respectively:
 </p>
-<div class="center" 
->
-<!--l. 121--><p class="noindent" >
-</p><!--l. 121--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-1-1-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 123--><p class="noindent" >
-</p><!--l. 123--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-1-2-.png?raw=true" alt="PIC"  
- /></p></div>
-<!--l. 125--><p class="indent" >    A streamline plot, and a glyph-based plot to show velocity direction:
+     <h3 class="sectionHead"><span class="titlemark">1.  </span> <a 
+ id="x1-10001"></a>Implementation</h3>
+<!--l. 116--><p class="noindent" >We implement all simulation with OpenFoam, analysis with Paraview and Python3,
+and documentation code in R Xie, Dervieux, and Riederer (2020).
+</p><!--l. 122--><p class="indent" >     <a 
+ id="nondimensional-form-of-the-navier-stokes-equations-for-the-lid-cavity-problem"></a>
 </p>
-<div class="center" 
->
-<!--l. 127--><p class="noindent" >
-</p><!--l. 127--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-2-1-.png?raw=true" alt="PIC"  
- /></p></div>
-                                                                                     
-                                                                                     
-<div class="center" 
->
-<!--l. 129--><p class="noindent" >
-</p><!--l. 129--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-2-2-.png?raw=true" alt="PIC"  
- /></p></div>
-<!--l. 131--><p class="indent" >    A pressure and velocity profile sampled along the midline: <img 
-src="article8x.png?raw=true" alt="˜x = 0.5  "  class="math"  />, in component form.
-Respectively, <img 
-src="article9x.png?raw=true" alt="π(˜x = 0.5, ˜y)  "  class="math"  />, <img 
-src="article10x.png?raw=true" alt="˜u(˜x = 0.5, ˜y)  "  class="math"  />, <img 
-src="article11x.png?raw=true" alt="˜v(˜x = 0.5, ˜y)  "  class="math"  />.
+     <h3 class="sectionHead"><span class="titlemark">2.  </span> <a 
+ id="x1-20002"></a>Nondimensional Form of the Navier-Stokes Equations for the Lid-Cavity
+Problem</h3>
+<!--l. 124--><p class="noindent" >The fluid flow in the lid-driven cavity problem is assumed to be 2D with
+                                                                  
+
+                                                                  
+constant density and dynamic viscosity, thus allowing us to consider the
+incompressible, steady form of the Navier-Stokes equations for continuity and
+momentum.
+</p><!--l. 129--><p class="indent" >   Let <img 
+src="article0x.png?raw=true" alt="L  "  class="math"  /> indicate the length of the cavity wall, <img 
+src="article1x.png?raw=true" alt="U  "  class="math"  /> the speed of the lid,
+the kinematic viscosity of the fluid, the density of the fluid, and <img 
+src="article2x.png?raw=true" alt="P  "  class="math"  /> the
+pressure. The variables <img 
+src="article3x.png?raw=true" alt="x  "  class="math"  /> and <img 
+src="article4x.png?raw=true" alt="y  "  class="math"  /> indicate the coordinate system and <img 
+src="article5x.png?raw=true" alt="u  "  class="math"  /> and
+<img 
+src="article6x.png?raw=true" alt="v  "  class="math"  /> represent the fluid velocity components in the <img 
+src="article7x.png?raw=true" alt="x  "  class="math"  /> and <img 
+src="article8x.png?raw=true" alt="y  "  class="math"  /> directions
+respectively.
+</p><!--l. 135--><p class="indent" >   The reference quantities can be non-dimensionalized as follows:
+</p><!--l. 137--><p class="indent" >   <img 
+src="../plots/eq/0.jpg" alt="PIC"  
+ /> or
+</p><!--l. 139--><p class="indent" >   <img 
+src="article9x.png?raw=true" alt="˜x = x-
+    L  "  class="math"  />, <img 
+src="article10x.png?raw=true" alt="˜y = y-
+    L  "  class="math"  />, <img 
+src="article11x.png?raw=true" alt="u˜= u-
+    U  "  class="math"  />, <img 
+src="article12x.png?raw=true" alt="˜v = v-
+    U  "  class="math"  />, <img 
+src="article13x.png?raw=true" alt="˜p = P-2
+    ρU   "  class="math"  />, and <img 
+src="article14x.png?raw=true" alt="˜t = tU-
+    L  "  class="math"  />.
+</p><!--l. 143--><p class="indent" >   We will now substitute the nondimensional terms into the incompressible, steady
+form of the Navier-Stokes equations, as given below.
+</p><!--l. 146--><p class="indent" >   <img 
+src="../plots/eq/setup.jpg" alt="PIC"  
+ />
+</p><!--l. 148--><p class="indent" >   The resulting nondimensional continuity equation is given by the following:
+</p><!--l. 151--><p class="indent" >   <img 
+src="../plots/eq/1.jpg" alt="PIC"  
+ />
+</p><!--l. 153--><p class="indent" >   Given that <img 
+src="article15x.png?raw=true" alt="U  "  class="math"  />,<img 
+src="article16x.png?raw=true" alt="L  "  class="math"  /> are constants, we further get:
+</p><!--l. 155--><p class="indent" >
 </p>
-<div class="center" 
->
-<!--l. 137--><p class="noindent" >
-</p><!--l. 137--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-3-1-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 139--><p class="noindent" >
-</p><!--l. 139--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-3-2-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 141--><p class="noindent" >
-</p><!--l. 141--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-3-3-.png?raw=true" alt="PIC"  
- /></p></div>
-<!--l. 144--><p class="indent" >    <a 
- id="refining-the-solution"></a>
-<a 
- id="x1-6r5"></a>
-</p><!--l. 144--><p class="noindent" >
-<span 
-class="cmbx-12">5.</span>
-<span 
-class="cmbx-12">Refining</span>
-<span 
-class="cmbx-12">the</span>
-<span 
-class="cmbx-12">solution</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 146--><p class="indent" >    We will demonstrate the increase in image fidelity due to finer discretization. The earlier
-midline velocity profiles: <img 
-src="article12x.png?raw=true" alt="˜u(˜x = 0.5, ˜y)  "  class="math"  />, <img 
-src="article13x.png?raw=true" alt="˜v(˜x = 0.5, ˜y)  "  class="math"  /> are successively halved in binwidth
-(grid size) in all directions: x, y, and t, for comparision.
+   <div class="math-display" >
+<img 
+src="article17x.png?raw=true" alt="∂u˜+ ∂v˜= 0
+∂x˜  ∂y˜
+" class="math-display"  /></div>
+<!--l. 157--><p class="indent" >   Similarly, the nondimensional form of the momentum equation in the x and y
+directions are derived as follows:
 </p>
-<div class="center" 
->
-                                                                                     
-                                                                                     
-<!--l. 152--><p class="noindent" >
-</p><!--l. 152--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-4-1-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 154--><p class="noindent" >
-</p><!--l. 154--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-4-2-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 156--><p class="noindent" >
-</p><!--l. 156--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-5-1-.png?raw=true" alt="PIC"  
- /></p></div>
-<div class="center" 
->
-<!--l. 158--><p class="noindent" >
-</p><!--l. 158--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-5-2-.png?raw=true" alt="PIC"  
- /></p></div>
 <div class="center" 
 >
 <!--l. 160--><p class="noindent" >
 </p><!--l. 160--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-6-1-.png?raw=true" alt="PIC"  
+src="article_files/figure-latex/unnamed-chunk-1-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+<!--l. 162--><p class="indent" >   Simplifying, we get for the x-momentum-balance:
+</p><!--l. 164--><p class="indent" >
+                                                                  
+
+                                                                  
+</p>
+   <div class="math-display" >
+<img 
+src="article18x.png?raw=true" alt="∂˜u               ∂˜p   ν
+-˜-+ ˜u ⋅(∇˜˜u) = − --+  ---Δ˜u
+∂t               ∂˜x   UL
+" class="math-display"  /></div>
+<!--l. 165--><p class="indent" >   Likewise, for the y-momentum-balance:
+</p><!--l. 167--><p class="indent" >
+</p>
+   <div class="math-display" >
+<img 
+src="article19x.png?raw=true" alt="∂˜v-+ ˜u ⋅(∇˜˜v) = −-∂˜p+ -ν-Δ ˜u
+∂ ˜t             ∂ ˜y  U L
+" class="math-display"  /></div>
+<!--l. 169--><p class="indent" >   The complete form is listed below for convenience:
+</p><!--l. 171--><p class="indent" >
+</p>
+   <div class="math-display" >
+<img 
+src="article20x.png?raw=true" alt="∂˜u                    1       1
+-˜-+(˜u ⋅ ˜∇)˜u = − ˜∇ ˜p+ Re-˜Δ˜u + Fr2g^.
+∂t
+" class="math-display"  /></div>
+<!--l. 172--><p class="indent" >   where <img 
+src="article21x.png?raw=true" alt="˜Δ˜u = ˜∇2˜u  "  class="math"  />, <img 
+src="article22x.png?raw=true" alt="Re = UL-=  ρUL-
+      ν     μ  "  class="math"  />, and <img 
+src="article23x.png?raw=true" alt="Fr = √U---
+       gL  "  class="math"  /> as commonly
+notated.
+</p><!--l. 178--><p class="indent" >   The only tunable parameter that appears in the lid-driven cavity momentum
+equations is the inverse of the Reynolds’ number <img 
+src="article24x.png?raw=true" alt=" ν    1
+UL-=  Re  "  class="math"  />. If this term approaches
+infinity, the Reynolds’ number reaches zero, causing the viscous term to dominate the
+momentum equation. If this term approaches zero, the Reynolds’ number approaches
+                                                                  
+
+                                                                  
+infinity, and the viscous term goes to zero and we can make the inviscid flow
+assumption.<br 
+class="newline" /># Description of the flow for Re = 10 {.chapter}
+</p><!--l. 187--><p class="indent" >   Following is the solution to the lid-driven cavity with lid velocity <img 
+src="article25x.png?raw=true" alt="U0 = 1m-
+      s  "  class="math"  />
+to the right, a characteristic length <img 
+src="article26x.png?raw=true" alt="L = 0.1m  "  class="math"  />, and kinematic viscosity
+<img 
+src="article27x.png?raw=true" alt="ν = μ = 0.01m2-
+    ρ       s  "  class="math"  />, yielding a Reynolds number of <img 
+src="article28x.png?raw=true" alt="Re = UL-= 10
+     ν  "  class="math"  />. Note the upper
+plane (<img 
+src="article29x.png?raw=true" alt="y = 0.1m  "  class="math"  />) represents the moving lid.<br 
+class="newline" />Please note that all output variables have been nondimensionalized to allow for easier
+comparision. So we report <img 
+src="article30x.png?raw=true" alt="π = P-
+    ρ  "  class="math"  /> pressure, and <img 
+src="article31x.png?raw=true" alt="˜u = U-
+    U0   "  class="math"  />, <img 
+src="article32x.png?raw=true" alt="˜v = V-
+    U0   "  class="math"  />.<br 
+class="newline" />20 grid points in each axis were used.
+</p><!--l. 198--><p class="indent" >   Contour plots for the X and Y components of fluid velocity, respectively:
+</p>
+<div class="center" 
+>
+<!--l. 201--><p class="noindent" >
+</p><!--l. 201--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-2-1-.png?raw=true" alt="PIC"  
  /></p></div>
 <div class="center" 
 >
-<!--l. 162--><p class="noindent" >
-</p><!--l. 162--><p class="noindent" > <img 
+<!--l. 203--><p class="noindent" >
+</p><!--l. 203--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-2-2-.png?raw=true" alt="PIC"  
+ /></p></div>
+<!--l. 205--><p class="indent" >   A streamline plot, and a glyph-based plot to show velocity direction:
+</p>
+<div class="center" 
+>
+<!--l. 207--><p class="noindent" >
+</p><!--l. 207--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-3-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 209--><p class="noindent" >
+</p><!--l. 209--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-3-2-.png?raw=true" alt="PIC"  
+ /></p></div>
+<!--l. 211--><p class="indent" >   A pressure and velocity profile sampled along the midline: <img 
+src="article33x.png?raw=true" alt="x˜= 0.5  "  class="math"  />, in
+component form. Respectively, <img 
+src="article34x.png?raw=true" alt="π (˜x = 0.5,˜y)  "  class="math"  />, <img 
+src="article35x.png?raw=true" alt="˜u(˜x = 0.5,˜y)  "  class="math"  />, <img 
+src="article36x.png?raw=true" alt="˜v(˜x = 0.5,˜y)  "  class="math"  />.
+</p>
+                                                                  
+
+                                                                  
+<div class="center" 
+>
+<!--l. 217--><p class="noindent" >
+</p><!--l. 217--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-4-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 219--><p class="noindent" >
+</p><!--l. 219--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-4-2-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 221--><p class="noindent" >
+</p><!--l. 221--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-4-3-.png?raw=true" alt="PIC"  
+ /></p></div>
+<!--l. 224--><p class="indent" >   <a 
+ id="refining-the-solution"></a>
+</p>
+   <h3 class="sectionHead"><span class="titlemark">3.  </span> <a 
+ id="x1-30003"></a>Refining the solution</h3>
+<!--l. 226--><p class="noindent" >We will demonstrate the increase in image fidelity due to finer discretization. The
+earlier midline velocity profiles: <img 
+src="article37x.png?raw=true" alt="˜u(˜x = 0.5,˜y)  "  class="math"  />, <img 
+src="article38x.png?raw=true" alt="˜v(˜x = 0.5,˜y)  "  class="math"  /> are successively
+halved in binwidth (grid size) in all directions: x, y, and t, for comparision.
+</p>
+<div class="center" 
+>
+<!--l. 232--><p class="noindent" >
+</p><!--l. 232--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-5-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 234--><p class="noindent" >
+</p><!--l. 234--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-5-2-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 236--><p class="noindent" >
+</p><!--l. 236--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-6-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+                                                                  
+
+                                                                  
+<div class="center" 
+>
+<!--l. 238--><p class="noindent" >
+</p><!--l. 238--><p class="noindent" > <img 
 src="article_files/figure-latex/unnamed-chunk-6-2-.png?raw=true" alt="PIC"  
  /></p></div>
 <div class="center" 
 >
-<!--l. 164--><p class="noindent" >
-</p><!--l. 164--><p class="noindent" > <img 
+<!--l. 240--><p class="noindent" >
+</p><!--l. 240--><p class="noindent" > <img 
 src="article_files/figure-latex/unnamed-chunk-7-1-.png?raw=true" alt="PIC"  
  /></p></div>
 <div class="center" 
 >
-<!--l. 166--><p class="noindent" >
-</p><!--l. 166--><p class="noindent" > <img 
+<!--l. 242--><p class="noindent" >
+</p><!--l. 242--><p class="noindent" > <img 
 src="article_files/figure-latex/unnamed-chunk-7-2-.png?raw=true" alt="PIC"  
  /></p></div>
-                                                                                     
-                                                                                     
-<!--l. 168--><p class="indent" >    As a final comparision, we plot <img 
-src="article14x.png?raw=true" alt="C  "  class="math"  />, the wallclock time per second versus <img 
-src="article15x.png?raw=true" alt="N  "  class="math"  />, the
-number of grid points used. As this is a 2D simulation, we expect a form similar to
-<img 
-src="article16x.png?raw=true" alt="C  = γ + β ∗ N α  "  class="math"  />, where <img 
-src="article17x.png?raw=true" alt="α = 2  "  class="math"  />, due to the number of dimensions. A fit to this curve is also
-shown.
+<div class="center" 
+>
+<!--l. 244--><p class="noindent" >
+</p><!--l. 244--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-8-1-.png?raw=true" alt="PIC"  
+ /></p></div>
+<div class="center" 
+>
+<!--l. 246--><p class="noindent" >
+</p><!--l. 246--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-8-2-.png?raw=true" alt="PIC"  
+ /></p></div>
+<!--l. 248--><p class="indent" >   As a final comparision, we plot <img 
+src="article39x.png?raw=true" alt="C  "  class="math"  />, the wallclock time per second versus <img 
+src="article40x.png?raw=true" alt="N  "  class="math"  />,
+the number of grid points used. As this is a 2D simulation, we expect a form similar
+to <img 
+src="article41x.png?raw=true" alt="C = γ + β ∗N α  "  class="math"  />, where <img 
+src="article42x.png?raw=true" alt="α = 2  "  class="math"  />, due to the number of dimensions. A fit to this
+curve is also shown.
 </p>
 <div class="center" 
 >
-<!--l. 174--><p class="noindent" >
-</p><!--l. 174--><p class="noindent" > <img 
-src="article_files/figure-latex/unnamed-chunk-8-1-.png?raw=true" alt="PIC"  
+<!--l. 254--><p class="noindent" >
+</p><!--l. 254--><p class="noindent" > <img 
+src="article_files/figure-latex/unnamed-chunk-9-1-.png?raw=true" alt="PIC"  
  /></p></div>
-<!--l. 176--><p class="indent" >    Interestingly, we do not get <img 
-src="article18x.png?raw=true" alt="α =  2  "  class="math"  />. The decreased alpha implies a large processing
-overhead necessary to start the simulation, especially as the fit is less accurate with fewer grid
-points. We can see that the fit has a large curvature, which would be produced by a
-constant overhead: the <img 
-src="article19x.png?raw=true" alt="γ  "  class="math"  /> variable, so there is some evidence for the is explanation.
-A similar test with a higher overall number of grid points ought to produce an
-alpha closer to 2. An alternative explanation would be accuracy saturation, where
-the solver reaches the required accuracy in fewer steps than expected, due to the
-fineness of the grid, causing increased performance, but this explanation is highly
-improbable.
-</p><!--l. 187--><p class="indent" >    Finally, we note that there are nearly imperceptible differences between the velocity
-profiles for grids 3 and 4, so a grid size of 80 points per axis satisfies the necessary
-accuracy.
-</p><!--l. 192--><p class="indent" >    <a 
- id="conclusion"></a>
-<a 
- id="x1-7r6"></a>
-</p><!--l. 192--><p class="noindent" >
-<span 
-class="cmbx-12">6.</span>
-<span 
-class="cmbx-12">Conclusion</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 194--><p class="indent" >    –conclusion here–
-</p><!--l. 197--><p class="indent" >    <a 
- id="references"></a>
-</p><!--l. 197--><p class="noindent" >
-<span 
-class="cmbx-12">References</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 200--><p class="indent" >    <a 
- id="refs"></a>
-</p><!--l. 205--><p class="indent" >    <a 
- id="appendix"></a>
-                                                                                     
-                                                                                     
-</p><!--l. 205--><p class="noindent" >
-<span 
-class="cmbx-12">Appendix</span>
-<a 
- id="Q1-1-0"></a>
-</p><!--l. 208--><p class="indent" >    Thank you so much for reading this work!
+<!--l. 256--><p class="indent" >   Interestingly, we do not get <img 
+src="article43x.png?raw=true" alt="α = 2  "  class="math"  />. The decreased alpha implies a large
+processing overhead necessary to start the simulation, especially as the fit is less
+accurate with fewer grid points. We can see that the fit has a large curvature, which
+would be produced by a constant overhead: the <img 
+src="article44x.png?raw=true" alt="γ  "  class="math"  /> variable, so there is some
+evidence for the is explanation. A similar test with a higher overall number of grid
+                                                                  
+
+                                                                  
+points ought to produce an alpha closer to 2. An alternative explanation would be
+accuracy saturation, where the solver reaches the required accuracy in fewer steps
+than expected, due to the fineness of the grid, causing increased performance, but
+this explanation is highly improbable.
+</p><!--l. 267--><p class="indent" >   Finally, we note that there are nearly imperceptible differences between the
+velocity profiles for grids 3 and 4, so a grid size of 80 points per axis satisfies the
+necessary accuracy.
+</p><!--l. 272--><p class="indent" >   <a 
+ id="force-on-a-lid"></a>
 </p>
-     
+   <h3 class="sectionHead"><span class="titlemark">4.  </span> <a 
+ id="x1-40004"></a>Force on a Lid</h3>
+<!--l. 274--><p class="noindent" >In this section, the nondimensional stress () and the nondimensional force (F) along
+the lid of the cavity were investigated at different Reynolds numbers. This
+was done by keeping U and L constant while only changing the dynamic
+viscosity.
+</p><!--l. 279--><p class="indent" >   Nondimensional stress was calculated using Equation # using the finite difference
+method to approximate the derivative. Nondimensional force was then calculated
+using Equation #.
+</p><!--l. 283--><p class="indent" >
+</p>
+   <div class="math-display" >
+<img 
+src="article45x.png?raw=true" alt="t = dudy
+" class="math-display"  /></div>
+<!--l. 285--><p class="indent" >
+</p>
+   <div class="math-display" >
+<img 
+src="article46x.png?raw=true" alt="    ∫
+F =    t(x)x
+" class="math-display"  /></div>
+                                                                  
+
+                                                                  
+<!--l. 287--><p class="indent" >   The stress plot has a minimum at the center of the lid and increases to a
+maximum close to both sides of the cavity’s walls. This may be due to boundary
+conditions at the walls.
+</p><!--l. 291--><p class="indent" >   The clear trend apparent in the nondimensional force plot is that it linearly
+increases as the Reynolds number increases. This is supported by the understanding
+that at higher Reynolds number we experience flows dominated by turbulence caused
+by inertial forces.
+</p><!--l. 297--><p class="indent" >   <a 
+ id="references"></a>
+</p>
+   <h3 class="likesectionHead"><a 
+ id="x1-50004"></a>References</h3>
+<a 
+ id="Q1-1-6"></a></p><!--l. 302--><p class="noindent" ><a 
+ id="ref-R-rmarkdown"></a>
+<!--l. 300--><p class="noindent" ><a 
+ id="refs"></a>   Allaire, JJ, Yihui Xie, Jonathan McPherson, Javier Luraschi, Kevin
+   Ushey, Aron Atkins, Hadley Wickham, Joe Cheng, Winston Chang,
+   and Richard Iannone. 2021. <span 
+class="ec-lmri-10">Rmarkdown: Dynamic Documents for r</span>.
+   <a 
+href="https://CRAN.R-project.org/package=rmarkdown" class="url" >https://CRAN.R-project.org/package=rmarkdown</a>.</p><!--l. 308--><p class="noindent" ><a 
+ id="ref-R-R.utils"></a>
+</p><!--l. 308--><p class="noindent" >Bengtsson, Henrik. 2021. <span 
+class="ec-lmri-10">R.utils: Various Programming Utilities</span>.
+   <a 
+href="https://github.com/HenrikBengtsson/R.utils" class="url" >https://github.com/HenrikBengtsson/R.utils</a>.</p><!--l. 312--><p class="noindent" ><a 
+ id="ref-R-jpeg"></a>
+</p><!--l. 312--><p class="noindent" >Urbanek, Simon. 2021. <span 
+class="ec-lmri-10">Jpeg: Read and Write JPEG Images</span>. <a 
+href="http://www.rforge.net/jpeg/" class="url" >http://www.rforge.net/jpeg/</a>.</p><!--l. 316--><p class="noindent" ><a 
+ id="ref-animation2013"></a>
+</p><!--l. 316--><p class="noindent" >Xie, Yihui. 2013. “animation: An R Package for Creating Animations and
+   Demonstrating Statistical Methods.” <span 
+class="ec-lmri-10">Journal of Statistical Software </span>53 (1): 1–27.
+   <a 
+href="https://doi.org/10.18637/jss.v053.i01" class="url" >https://doi.org/10.18637/jss.v053.i01</a>.</p><!--l. 321--><p class="noindent" ><a 
+ id="ref-knitr2014"></a>
+</p><!--l. 321--><p class="noindent" >———. 2014. “Knitr: A Comprehensive Tool for Reproducible Research in R.” In
+   <span 
+class="ec-lmri-10">Implementing Reproducible Computational Research</span>, edited by Victoria
+   Stodden, Friedrich Leisch, and Roger D. Peng. Chapman; Hall/CRC.
+   <a 
+href="http://www.crcpress.com/product/isbn/9781466561595" class="url" >http://www.crcpress.com/product/isbn/9781466561595</a>.</p><!--l. 328--><p class="noindent" ><a 
+ id="ref-knitr2015"></a>
+</p><!--l. 328--><p class="noindent" >———. 2015. <span 
+class="ec-lmri-10">Dynamic Documents with R and Knitr</span>. 2nd ed. Boca Raton, Florida:
+   Chapman; Hall/CRC. <a 
+href="https://yihui.org/knitr/" class="url" >https://yihui.org/knitr/</a>.</p><!--l. 332--><p class="noindent" ><a 
+ id="ref-R-animation"></a>
+</p><!--l. 332--><p class="noindent" >———. 2021a. <span 
+class="ec-lmri-10">Animation: A Gallery of Animations in Statistics and Utilities to</span>
+   <span 
+class="ec-lmri-10">Create Animations</span>. <a 
+href="https://yihui.org/animation/" class="url" >https://yihui.org/animation/</a>.</p><!--l. 336--><p class="noindent" ><a 
+ id="ref-R-knitr"></a>
+</p><!--l. 336--><p class="noindent" >———. 2021b. <span 
+class="ec-lmri-10">Knitr: A General-Purpose Package for Dynamic Report Generation in</span>
+   <span 
+class="ec-lmri-10">r</span>. <a 
+href="https://yihui.org/knitr/" class="url" >https://yihui.org/knitr/</a>.</p><!--l. 340--><p class="noindent" ><a 
+ id="ref-rmarkdown2018"></a>
+</p><!--l. 340--><p class="noindent" >Xie, Yihui, J. J. Allaire, and Garrett Grolemund. 2018. <span 
+class="ec-lmri-10">R Markdown:</span>
+   <span 
+class="ec-lmri-10">The Definitive Guide</span>. Boca Raton, Florida: Chapman; Hall/CRC.
+   <a 
+href="https://bookdown.org/yihui/rmarkdown" class="url" >https://bookdown.org/yihui/rmarkdown</a>.</p><!--l. 345--><p class="noindent" ><a 
+ id="ref-rmarkdown2020"></a>
+</p><!--l. 345--><p class="noindent" >Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <span 
+class="ec-lmri-10">R Markdown Cookbook</span>. Boca
+   Raton, Florida: Chapman; Hall/CRC. <a 
+href="https://bookdown.org/yihui/rmarkdown-cookbook" class="url" >https://bookdown.org/yihui/rmarkdown-cookbook</a>.
+</p><!--l. 353--><p class="indent" >   <a 
+ id="appendix"></a>
+</p>
+   <h3 class="likesectionHead"><a 
+ id="x1-60004"></a>Appendix</h3>
+<a 
+ id="Q1-1-8"></a>
+<!--l. 356--><p class="noindent" >Thank you so much for reading this work!
+                                                                  
+
+                                                                  
+</p>
+    
 </main> 
 </body> 
 </html>
-                                                                                     
+                                                                  
 
 

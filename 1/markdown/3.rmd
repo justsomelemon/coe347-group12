@@ -1,0 +1,13 @@
+# Force on a Lid
+
+In this section, the nondimensional stress () and the nondimensional force (F) along the lid of the cavity were investigated at different Reynolds numbers. This was done by keeping U and L constant while only changing the dynamic viscosity.
+
+Nondimensional stress was calculated using Equation # using the finite difference method to approximate the derivative. Nondimensional force was then calculated using Equation #.
+
+$$ t=dudy $$
+
+$$F=\int{t(x)}{x}$$
+
+The stress plot has a minimum at the center of the lid and increases to a maximum close to both sides of the cavity’s walls. This may be due to boundary conditions at the walls. 
+
+The clear trend apparent in the nondimensional force plot is that it linearly increases as the Reynolds number increases. This is supported by the understanding that at higher Reynolds number we experience flows dominated by turbulence caused by inertial forces. 
