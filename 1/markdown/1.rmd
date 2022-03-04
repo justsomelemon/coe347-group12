@@ -1,8 +1,3 @@
----
-output:
-  pdf_document: default
-  html_document: default
----
 # Nondimensional Form of the Navier-Stokes Equations for the Lid-Cavity Problem {.chapter}
 
 The fluid flow in the lid-driven cavity problem is assumed to be 2D with constant density and dynamic viscosity, thus allowing us to consider the incompressible, steady form of the Navier-Stokes equations for continuity and momentum. 
