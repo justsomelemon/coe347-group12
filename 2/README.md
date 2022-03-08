@@ -40,7 +40,7 @@
 - `Paraview` with `pvpython` (`pvpython` should automatically be installed)
 - `pip install --user numpy scandir` (and `os`, `sys`, which are default packages and need not be installed!)
 - `Python 3` (via `module load python3`)
-- `pip3 install --user numpy matplotlib jpcm scipy` (and `os`, `sys`, `re`, which are default packages and need not be installed!)
+- `pip3 install --user numpy matplotlib jpcm scipy` (and `os`, `sys`, `re`, `json`, which are default packages and need not be installed!)
 - `R >= 4.0.3` (via `module load R`)
 - some R packages: `magick, jpeg, R.utils, animation, pagedown, bookdown`  
   
