@@ -17,7 +17,7 @@ def plot(run, number, renderView1):
                    TransparentBackground=1)
 
 
-resolution = [800, 600]
+resolution = [1000, 800]
 
 if __name__ == '__main__':
 
@@ -67,16 +67,26 @@ if __name__ == '__main__':
         # update the view to ensure updated data information
         renderView1.Update()
         # change representation type
-        a_foamDisplay.SetRepresentationType('Surface With Edges')
+        a_foamDisplay.SetRepresentationType('Surface')
         # current camera placement for renderView1
-        renderView1.CameraPosition = [
-            0.05000000074505806, 0.05000000074505806, 0.27888724573938806]
-        renderView1.CameraFocalPoint = [
-            0.05000000074505806, 0.05000000074505806, 0.004999999888241291]
-        renderView1.CameraParallelScale = 0.07088723543695315
+        # renderView1.CameraPosition = [
+        #     0.05000000074505806, 0.05000000074505806, 0.27888724573938806]
+        # renderView1.CameraFocalPoint = [
+        #     0.05000000074505806, 0.05000000074505806, 0.004999999888241291]
+        renderView1.CameraParallelScale = 4
+        renderView1.InteractionMode = '2D'
         renderView1.AxesGrid.Visibility = 1
 
         # -------------------------------------------------------------------- MAKE PLOTS
+
+        # set scalar coloring
+        ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
+        a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
+        a_foamDisplay.SetRepresentationType('Surface With Edges')
+        plot(run, "MESH", renderView1)
+
+        renderView1.ResetCamera()
+        renderView1.Update()
 
         # set scalar coloring
         ColorBy(a_foamDisplay, ('CELLS', 'p'))
@@ -85,6 +95,7 @@ if __name__ == '__main__':
         # rescale color and/or opacity maps used to include current data range
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
         # show color bar/color legend
+        a_foamDisplay.SetRepresentationType('Surface')
         a_foamDisplay.SetScalarBarVisibility(renderView1, True)
         plot(run, "P", renderView1)
 
@@ -139,7 +150,7 @@ if __name__ == '__main__':
     allruns = [f.name for f in scandir.scandir(datapath)]
     runs = []
     for run in allruns:
-        if not re.search('[a-zA-Z]', run):
+        if 'run_' in run:
             runs.append(run)
     for run in runs:
         print("Plotting for Run {}".format(run))

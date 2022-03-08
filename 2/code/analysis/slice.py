@@ -1,18 +1,21 @@
+import numpy as np
+import default
 from paraview.simple import *
 import paraview.servermanager as sm
-#### disable automatic camera reset on 'Show'
+# disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
-import default
-import numpy as np
 
-def sliceXY(a_foam,renderView1,pLUT,uLUT,run,number):
+origin = [0.5, 0, 0]
+
+
+def sliceXY(a_foam, renderView1, pLUT, uLUT, run, number):
     # create a new 'Slice'
     slice1 = Slice(Input=a_foam)
     slice1.SliceType = 'Plane'
     slice1.SliceOffsetValues = [0.0]
 
     # Properties modified on slice1.SliceType
-    slice1.SliceType.Origin = [0.05, 0.05, 0.005]
+    slice1.SliceType.Origin = origin
     slice1.SliceType.Normal = [0.0, 0.0, 1.0]
 
     # show data in view
@@ -47,13 +50,14 @@ def sliceXY(a_foam,renderView1,pLUT,uLUT,run,number):
 
     return slice1
 
-def velocityXYPlot(slice1,renderView1,pLUT,run):
+
+def velocityXYPlot(slice1, renderView1, pLUT, run):
     # create a new 'Glyph'
     glyph1 = Glyph(Input=slice1,
-        GlyphType='Arrow')
+                   GlyphType='Arrow')
     glyph1.Scalars = ['POINTS', 'p']
     glyph1.Vectors = ['POINTS', 'U']
-    glyph1.ScaleFactor = 0.005
+    # glyph1.ScaleFactor = 0.005
     glyph1.GlyphTransform = 'Transform2'
     # show data in view
     glyph1Display = Show(glyph1, renderView1)
@@ -76,7 +80,7 @@ def velocityXYPlot(slice1,renderView1,pLUT,run):
     renderView1.Background = [0.0, 0.0, 0.0]
 
     glyph1Display = Show(glyph1, renderView1)
-    default.plot(run,"U-glyphs",renderView1)
+    default.plot(run, "U-glyphs", renderView1)
 
     Delete(glyph1)
     del glyph1
@@ -84,13 +88,14 @@ def velocityXYPlot(slice1,renderView1,pLUT,run):
     Delete(glyph1Display)
     del glyph1Display
 
-def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
+
+def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
     # info = sm.Fetch(slice1)
 
     # #options for component: -1, 0, 1 and 2 => Mag, X, Y, Z
     # component = -1
-    ids = ['','_X','_Y','_Z']
-    id2s = ['Magnitude','X','Y','Z']
+    ids = ['', '_X', '_Y', '_Z']
+    id2s = ['Magnitude', 'X', 'Y', 'Z']
     id = ids[ax]
     id2 = id2s[ax]
     component = ax-1
@@ -109,7 +114,7 @@ def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
     # create a new 'Contour'
     contour1 = Contour(Input=slice1)
     contour1.ContourBy = ['POINTS', 'U'+id]
-    contour1.Isosurfaces = np.linspace(ranges[0],ranges[1],n).tolist()
+    contour1.Isosurfaces = np.linspace(ranges[0], ranges[1], n).tolist()
     contour1.PointMergeMethod = 'Uniform Binning'
     # get color transfer function/color map for 'p'
     pLUT = GetColorTransferFunction('p')
@@ -130,7 +135,7 @@ def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
     # show color bar/color legend
     contour1Display.SetScalarBarVisibility(renderView1, True)
     UpdateScalarBarsComponentTitle(uLUT, contour1Display)
-    default.plot(run,"U-"+id2+"_contour",renderView1)
+    default.plot(run, "U-"+id2+"_contour", renderView1)
 
     Delete(contour1)
     del contour1
@@ -138,20 +143,21 @@ def velocityXYContour(slice1,renderView1,pLUT,uLUT,run,ax=1,n=100):
     Delete(contour1Display)
     del contour1Display
 
-def velocityXYStream(a_foam,renderView1,pLUT,uLUT,run,ax=0,n=21):
-    ids = ['','_X','_Y','_Z']
-    id2s = ['Magnitude','X','Y','Z']
+
+def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
+    ids = ['', '_X', '_Y', '_Z']
+    id2s = ['Magnitude', 'X', 'Y', 'Z']
     id = ids[ax]
     id2 = id2s[ax]
     component = ax-1
 
     # create a new 'Stream Tracer'
     streamTracer1 = StreamTracer(Input=a_foam,
-        SeedType='High Resolution Line Source')
+                                 SeedType='High Resolution Line Source')
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Resolution = 100
+    streamTracer1.SeedType.Resolution = 400
     # Properties modified on streamTracer1
-    streamTracer1.MaximumStreamlineLength = 1.0
+    streamTracer1.MaximumStreamlineLength = 1200
     # show data in view
     streamTracer1Display = Show(streamTracer1, renderView1)
     # trace defaults for the display properties.
@@ -173,8 +179,8 @@ def velocityXYStream(a_foam,renderView1,pLUT,uLUT,run,ax=0,n=21):
     # show color bar/color legend
     streamTracer1Display.SetScalarBarVisibility(renderView1, True)
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Point1 = [0.05, 0.0, 0.005]
-    streamTracer1.SeedType.Point2 = [0.05, 0.1, 0.005]
+    streamTracer1.SeedType.Point1 = [0.5, 4.0, 0]
+    streamTracer1.SeedType.Point2 = [0.5, -4.0, 0]
     # update the view to ensure updated data information
     renderView1.Update()
     # Rescale transfer function
@@ -190,7 +196,7 @@ def velocityXYStream(a_foam,renderView1,pLUT,uLUT,run,ax=0,n=21):
     # update the view to ensure updated data information
     renderView1.Update()
 
-    default.plot(run,"U-"+id2+"_streamlines",renderView1)
+    default.plot(run, "U-"+id2+"_streamlines", renderView1)
 
     # destroy streamTracer1
     Delete(streamTracer1)
