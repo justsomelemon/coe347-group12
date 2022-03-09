@@ -10,6 +10,7 @@ U = 1
 L = 1
 
 TDREH = 40  # Time-Dependency Reynolds Threshold
+LFRETH = 60  # Laminar-Flow Reynolds Threshold
 
 pathNames = ["constant/transportProperties",
              "system/controlDict", "system/decomposeParDict", "system/probes", "system/singleGraph"]
@@ -39,19 +40,20 @@ def generateParameters(settings):
     # key defaults
 
     class key:
-        f = int(2*pi.Re)  # NEEDS TO BE INT
+        # NEEDS TO BE INT, mesh size is inversely dependent on Re for laminar flows
+        f = int(min(pi.Re, LFRETH))
 
         R = L/2
         R2 = 3*L/2
         H = 4
         F = 4
-        W = 4 + pi.Re*(1/10)
+        W = 4 + f*(1/10)
         K = 4
         # not using a core to leave some headroom.
-        coreMax = len(os.sched_getaffinity(0))
+        coreMax = min(len(os.sched_getaffinity(0)), 68)
         cores = coreMax - 1
 
-        dt = 0.005/pi.Re
+        dt = 0.005/f
 
         if pi.Re > TDREH:
             et = (F+W)/U

@@ -10,15 +10,12 @@
 
 runnames=*run_* # all appropriate runs start with `run_`!
 echo "-\| STAGING : "
-pwd
-ls
 echo "-\| INITIALIZE"
 python3 analysis/param.py
 cd sim/
 touch time.txt
 cd ../
 cd param/
-echo "Runs: ${ls}"
 for run in $(echo */)
 do
     case "$run" in

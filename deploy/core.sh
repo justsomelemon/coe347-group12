@@ -49,7 +49,7 @@ echo "PROJECT = ${PROJECT}"
 echo "REMOTE = ${REMOTE}"
 echo "USERNAME = ${USERNAME}"
 echo ""
-read -p "[?] Would you like to continue?"
+read -p "[?] Would you like to continue? Please verify the above information first."
 
 # deploy
 
@@ -76,32 +76,22 @@ scp -r ${files} "${remote}":\$WORK/"${REMOTE}"code/
 echo ""
 echo "[-] RUN : TACC." 
 ssh -tt "${remote}" << EOF 
- echo "[+] RUN : MODULE LOAD." 
- module list
- module load python3
- module load openfoam
- echo "[+] RUN : SLURM RUN." 
- cdw
- cd "${REMOTE}"code
- sbatch run.slurm &
- process_id=$!
- echo "[+] RUN : SLURM RUN - PID: $process_id"
- wait $process_id
- echo "[+] RUN : SLURM RUN - Exit status: $?"
- echo "[+] ANALYZE : MODULE LOAD" 
- module load gcc/9.1.0
- module load swr/21.2.5
- module load qt5/5.14.2
- module load oneapi_rk/2021.4.0
- module load paraview/5.10.0
- echo "[+] ANALYZE : PIP3 INSTALL" 
- pip3 install --user jpcm colour-science pynverse scandir
- echo "[+] ANALYZE : SCRIPT" 
- sh analyze.sh
- exit
+cdw
+cd "${REMOTE}"code
+cd sim/
+chmod +x *
+cd ../
+sbatch run.slurm &
+process_id=$!
+echo "[+] RUN : SLURM RUN - PID: $process_id"
+wait $process_id
+echo "[+] RUN : SLURM RUN - Exit status: $?"
+exit
 EOF
 
 echo ""
+
+read -p "[?] Would you like to continue? Only do so once job has completed!"
 
 echo "[-] COPYBACK : SCP files." 
 scp -r "${remote}":\$WORK/"${REMOTE}"code/data/ "${folder}"/data/ && scp -r "${remote}":\$WORK/"${REMOTE}"plots/ "${FOLDER}${PROJECT}"/plots/
