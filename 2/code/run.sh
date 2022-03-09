@@ -1,4 +1,5 @@
-#!bin/sh
+#!/bin/sh
+# cd ${0%/*} || exit 1    # Run from this directory
 
 # sh script to run every version of the simulation.
 
@@ -8,13 +9,16 @@
 # 4) delete parameter files from simulation directory
 
 runnames=*run_* # all appropriate runs start with `run_`!
-
+echo "-\| STAGING : "
+pwd
+ls
 echo "-\| INITIALIZE"
 python3 analysis/param.py
 cd sim/
 touch time.txt
 cd ../
 cd param/
+echo "Runs: ${ls}"
 for run in $(echo */)
 do
     case "$run" in
