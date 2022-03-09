@@ -27,7 +27,7 @@
   deltaT          XXXX;
   writeInterval   XXXX;
 
-  * Select the time step size ``deltaT'' so that ``Courant Number max'' (see log.icoFoam) remains
+  * Select the time step size ``deltaT`` so that ``Courant Number max`` (see log.icoFoam) remains
     below 0.5 at all times. Note that when the mesh (and cell sizes) changes, you may need to
     adjust the time step size.
 
