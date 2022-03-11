@@ -50,7 +50,7 @@ def generateParameters(settings):
         W = 4 + f*(1/10)
         K = 4
         # not using a core to leave some headroom.
-        coreMax = min(len(os.sched_getaffinity(0)), 68)
+        coreMax = min(len(os.sched_getaffinity(0)), 48)
         cores = coreMax - 1
 
         dt = 0.005/f
