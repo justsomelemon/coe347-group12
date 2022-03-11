@@ -8,12 +8,12 @@
 #SBATCH -e ofe.%j       # Name of stderr error file
 
 ### #SBATCH -p normal          # Queue (partition) name
-#SBATCH -p development          # Queue (partition) name
-### #SBATCH -p skx-normal          # Queue (partition) name
+### #SBATCH -p development          # Queue (partition) name
+#SBATCH -p skx-normal          # Queue (partition) name
 
 #SBATCH -N 1               # Total # of nodes
-#SBATCH -n 68               # Total # of mpi tasks
-#SBATCH -t 01:00:00        # Run time (hh:mm:ss)
+#SBATCH -n 48               # Total # of mpi tasks
+#SBATCH -t 04:00:00        # Run time (hh:mm:ss)
 
 #SBATCH --mail-user=akhil.sadam@utexas.edu
 #SBATCH --mail-type=all    # Send email at begin and end of job
