@@ -8,6 +8,8 @@ nSector = 2**nP  # must be a power of 2, greater than 8!
 nV = nSector*6 + 16
 
 
+# test
+
 def gen(key):
     # blockFactor = pi.Re
     # R = L/2
