@@ -81,15 +81,20 @@ cd "${REMOTE}"code
 cd sim/
 chmod +x *
 cd ../
-job_id=$(sbatch run.slurm)
-job_done=0
-while [ "$job_done" -neq "slurm_load_jobs error: Invalid job id specified" ]
-do
-    job_done=$(squeue ${job_id})
-    sleep 60
-done
-
+sbatch run.slurm
 EOF
+
+
+# minor change to core.sh
+# we want the below polling code to run, but I haven't fixed it yet, so please just wait to run that last command
+
+# job_id=$(sbatch run.slurm)
+# job_done=0
+# while [ "$job_done" -neq "slurm_load_jobs error: Invalid job id specified" ]
+# do
+#     job_done=$(squeue ${job_id})
+#     sleep 60
+# done
 
 echo ""
 
