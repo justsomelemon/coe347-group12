@@ -42,7 +42,7 @@ def generateParameters(settings):
     class key:
         # NEEDS TO BE INT, mesh size should be inversely dependent on Re for laminar flows,
         # but that is not at all possible unless TACC simulates one plot for a week!
-        f = 10  # int(min(pi.Re, LFRETH))
+        f = int(10*np.sqrt(pi.Re))  # int(min(pi.Re, LFRETH))
 
         R = L/2
         R2 = 3*L/2
