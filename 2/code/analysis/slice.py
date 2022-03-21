@@ -155,9 +155,9 @@ def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
     streamTracer1 = StreamTracer(Input=a_foam,
                                  SeedType='High Resolution Line Source')
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Resolution = 400
+    streamTracer1.SeedType.Resolution = 100
     # Properties modified on streamTracer1
-    streamTracer1.MaximumStreamlineLength = 1200
+    streamTracer1.MaximumStreamlineLength = 100
     # show data in view
     streamTracer1Display = Show(streamTracer1, renderView1)
     # trace defaults for the display properties.
@@ -179,8 +179,8 @@ def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
     # show color bar/color legend
     streamTracer1Display.SetScalarBarVisibility(renderView1, True)
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Point1 = [0.5, 4.0, 0]
-    streamTracer1.SeedType.Point2 = [0.5, -4.0, 0]
+    streamTracer1.SeedType.Point1 = [2, 4.0, 0]
+    streamTracer1.SeedType.Point2 = [2, -4.0, 0]
     # update the view to ensure updated data information
     renderView1.Update()
     # Rescale transfer function

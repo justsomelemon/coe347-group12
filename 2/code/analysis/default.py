@@ -1,6 +1,6 @@
 from utils import *
 from paraview.simple import *
-import scandir
+import os
 import sys
 import re
 sys.path.append("/usr/lib/paraview/site-packages")
@@ -138,7 +138,7 @@ if __name__ == '__main__':
         import slice
         slice1 = slice.sliceXY(a_foam, renderView1,
                                pLUT, uLUT, run, "U-glyphs")
-        slice.velocityXYPlot(slice1, renderView1, pLUT, run)
+        # slice.velocityXYPlot(slice1, renderView1, pLUT, run)
         slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run)
         slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=2)
         slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=0)
@@ -147,7 +147,7 @@ if __name__ == '__main__':
         slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=1)
         slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=2)
 
-    allruns = [f.name for f in scandir.scandir(datapath)]
+    allruns = os.listdir(datapath)
     runs = []
     for run in allruns:
         if 'run_' in run:
