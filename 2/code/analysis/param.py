@@ -48,7 +48,7 @@ def generateParameters(settings):
         R2 = 3*L/2
         H = 4
         F = 4
-        W = 4 + pi.Re*(1/10)
+        W = 4 + pi.Re*(1/15)
         K = 4
         # not using a core to leave some headroom.
         coreMax = min(len(os.sched_getaffinity(0)), 48)
@@ -59,7 +59,7 @@ def generateParameters(settings):
         T0 = (F+W)/U
 
         if pi.Re > TDREH:
-            et = 3*T0
+            et = 6*T0
             wt = 0.1
         else:
             et = T0+0.3
