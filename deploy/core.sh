@@ -53,7 +53,7 @@ read -p "[?] Would you like to continue? Please verify the above information fir
 
 # deploy
 
-folder="${FOLDER}${PROJECT}"/code
+folder="${FOLDER}""${PROJECT}"/code
 files="${folder}/runTACC.sh ${folder}/run.slurm ${folder}/analyze.sh ${folder}/param/ ${folder}/sim/ ${folder}/analysis/"
 remote="${USERNAME}"@stampede2.tacc.utexas.edu
 
@@ -81,12 +81,14 @@ cd "${REMOTE}"code
 cd sim/
 chmod +x *
 cd ../
-sbatch run.slurm &
-process_id=$!
-echo "[+] RUN : SLURM RUN - PID: $process_id"
-wait $process_id
-echo "[+] RUN : SLURM RUN - Exit status: $?"
-exit
+job_id=$(sbatch run.slurm)
+job_done=0
+while [ "$job_done" -neq "slurm_load_jobs error: Invalid job id specified" ]
+do
+    job_done=$(squeue ${job_id})
+    sleep 60
+done
+
 EOF
 
 echo ""
@@ -94,7 +96,8 @@ echo ""
 read -p "[?] Would you like to continue? Only do so once job has completed!"
 
 echo "[-] COPYBACK : SCP files." 
-scp -r "${remote}":\$WORK/"${REMOTE}"code/data/ "${folder}"/data/ && scp -r "${remote}":\$WORK/"${REMOTE}"plots/ "${FOLDER}${PROJECT}"/plots/
+scp -r "${remote}":\$WORK/"${REMOTE}"code/data/ "${folder}"/
+scp -r "${remote}":\$WORK/"${REMOTE}"plots/ "${FOLDER}""${PROJECT}"/
 echo ""
 echo "[|] COMPLETE -\\\\\\\\-=||"
 
