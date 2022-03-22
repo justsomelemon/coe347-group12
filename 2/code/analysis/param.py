@@ -42,7 +42,7 @@ def generateParameters(settings):
     class key:
         # NEEDS TO BE INT, mesh size should be inversely dependent on Re for laminar flows,
         # but that is not at all possible unless TACC simulates one plot for a week!
-        f = int(10*np.sqrt(pi.Re))  # int(min(pi.Re, LFRETH))
+        f = int(max(10, pi.Re/3))  # int(min(pi.Re, LFRETH))
 
         R = L/2
         R2 = 3*L/2
@@ -51,10 +51,11 @@ def generateParameters(settings):
         W = 4 + pi.Re*(1/15)
         K = 4
         # not using a core to leave some headroom.
-        coreMax = min(len(os.sched_getaffinity(0)), 48)
-        cores = coreMax - 1
+        coreMax = min(len(os.sched_getaffinity(0)), 48*2)
+        # cores = coreMax - 1
+        cores = 96  # forcing dual core on TACC
 
-        dt = 0.005/f
+        dt = 0.02/f
 
         T0 = (F+W)/U
 
