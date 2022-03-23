@@ -51,9 +51,13 @@ def generateParameters(settings):
         W = 4 + pi.Re*(1/15)
         K = 4
         # not using a core to leave some headroom.
-        coreMax = min(len(os.sched_getaffinity(0)), 48*2)
-        # cores = coreMax - 1
-        cores = 96  # forcing dual core on TACC
+        if len(os.sched_getaffinity(0)) > 16:
+            # this is TACC
+            coreMax = 192
+            cores = 192  # forcing quad core on TACC
+        else:
+            coreMax = min(len(os.sched_getaffinity(0)), 48*4)
+            cores = coreMax - 1
 
         dt = 0.02/f
 

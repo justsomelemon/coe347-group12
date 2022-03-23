@@ -1,0 +1,62 @@
+# Description of the flow for Re = 10 {.chapter}  
+
+Following is the solution to the lid-driven cavity with lid velocity $U_0=1\frac{m}{s}$ to the right, a characteristic length $L=0.1m$, and kinematic viscosity $\nu=\frac{\mu}{\rho}=0.01\frac{m^2}{s}$, yielding a Reynolds number of $Re=\frac{UL}{\nu}=10$. Note the upper plane ($y=0.1m$) represents the moving lid.  
+Please note that all output variables have been nondimensionalized to allow for easier comparision. So we report $\pi=\frac{P}{\rho}$ pressure, and $\tilde{u}=\frac{U}{U_0}$, $\tilde{v}=\frac{V}{U_0}$.  
+20 grid points in each axis were used.  
+
+Contour plots for the X and Y components of fluid velocity, respectively:  
+
+```{r}
+imshow("1/1_U-X_contour.jpg")
+imshow("1/1_U-Y_contour.jpg")
+```  
+
+A streamline plot, and a glyph-based plot to show velocity direction:
+
+```{r}
+imshow("1/1_U-Y_contour.jpg")
+imshow("1/1_U-glyphs.jpg")
+```
+
+A pressure and velocity profile sampled along the midline: $\tilde{x}=0.5$, in component form. Respectively, $\pi(\tilde{x}=0.5,\tilde{y})$, $\tilde{u}(\tilde{x}=0.5,\tilde{y})$, $\tilde{v}(\tilde{x}=0.5,\tilde{y})$.  
+
+```{r}
+imshow("1/0.5/midline_P.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+# Refining the solution {.chapter}  
+
+We will demonstrate the increase in image fidelity due to finer discretization. The earlier midline velocity profiles: $\tilde{u}(\tilde{x}=0.5,\tilde{y})$, $\tilde{v}(\tilde{x}=0.5,\tilde{y})$ are successively halved in binwidth (grid size) in all directions: x, y, and t, for comparision.
+
+```{r}
+imshow("1/0.5/midline_U.xy_X vs Y.jpg")
+imshow("1/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("2/0.5/midline_U.xy_X vs Y.jpg")
+imshow("2/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("3/0.5/midline_U.xy_X vs Y.jpg")
+imshow("3/0.5/midline_U.xy_Y vs Y.jpg")
+```
+
+```{r}
+imshow("4/0.5/midline_U.xy_X vs Y.jpg")
+imshow("4/0.5/midline_U.xy_Y vs Y.jpg")
+```
+  
+As a final comparision, we plot $C$, the wallclock time per second versus $N$, the number of grid points used. As this is a 2D simulation, we expect a form similar to $C=\gamma + \beta*N^{\alpha}$, where $\alpha=2$, due to the number of dimensions. A fit to this curve is also shown.  
+
+```{r}
+imshow("time.jpg")
+```
+
+Interestingly, we do not get $\alpha=2$. The decreased alpha implies a large processing overhead necessary to start the simulation, especially as the fit is less accurate with fewer grid points. We can see that the fit has a large curvature, which would be produced by a constant overhead: the $\gamma$ variable, so there is some evidence for the is explanation. A similar test with a higher overall number of grid points ought to produce an alpha closer to 2. An alternative explanation would be accuracy saturation, where the solver reaches the required accuracy in fewer steps than expected, due to the fineness of the grid, causing increased performance, but this explanation is highly improbable. 
+  
+Finally, we note that there are nearly imperceptible differences between the velocity profiles for grids 3 and 4, so a grid size of 80 points per axis satisfies the necessary accuracy.  
+

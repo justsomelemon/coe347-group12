@@ -3,3 +3,4 @@
 __pycache__
 log.*
 .stderr
+.mp4

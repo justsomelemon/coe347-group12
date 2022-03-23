@@ -144,6 +144,52 @@ def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
     del contour1Display
 
 
+def pressureContour(slice1, renderView1, pLUT, uLUT, run, n=100):
+    # info = sm.Fetch(slice1)
+    # cdi = slice1.GetDataInformation().GetCompositeDataInformation()
+    # for i in range(cdi.GetNumberOfChildren()):
+    #     print 'Block Name: ', cdi.GetName(i)
+    #     data = cdi.GetDataInformation(i).GetCellDataInformation()
+    #     for j in range(data.GetNumberOfArrays()):
+    #         array = data.GetArrayInformation(j)
+    #         arrayName = array.GetName()
+    #         dataRange = array.GetComponentRange(component)
+    #         print arrayName, dataRange
+    ranges = slice1.PointData.GetArray("p").GetRange()
+    # print(ranges)
+    # create a new 'Contour'
+    contour1 = Contour(Input=slice1)
+    contour1.ContourBy = ['POINTS', 'p']
+    contour1.Isosurfaces = np.linspace(ranges[0], ranges[1], n).tolist()
+    contour1.PointMergeMethod = 'Uniform Binning'
+    # get color transfer function/color map for 'p'
+    pLUT = GetColorTransferFunction('p')
+    # show data in view
+    contour1Display = Show(contour1, renderView1)
+    # hide data in view
+    Hide(slice1, renderView1)
+    # show color bar/color legend
+    contour1Display.SetScalarBarVisibility(renderView1, True)
+    # update the view to ensure updated data information
+    renderView1.Update()
+    # set scalar coloring
+    ColorBy(contour1Display, ('CELLS', 'p'))
+    # Hide the scalar bar for this color map if no visible data is colored by it.
+    HideScalarBarIfNotNeeded(pLUT, renderView1)
+    # rescale color and/or opacity maps used to include current data range
+    contour1Display.RescaleTransferFunctionToDataRange(True, False)
+    # show color bar/color legend
+    contour1Display.SetScalarBarVisibility(renderView1, True)
+    UpdateScalarBarsComponentTitle(uLUT, contour1Display)
+    default.plot(run, "p_contour", renderView1)
+
+    Delete(contour1)
+    del contour1
+    contour1Display.SetScalarBarVisibility(renderView1, False)
+    Delete(contour1Display)
+    del contour1Display
+
+
 def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
     ids = ['', '_X', '_Y', '_Z']
     id2s = ['Magnitude', 'X', 'Y', 'Z']
