@@ -80,6 +80,7 @@ if __name__ == '__main__':
         # -------------------------------------------------------------------- MAKE PLOTS
 
         # set scalar coloring
+        renderView1.CameraParallelScale = 6
         ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
         a_foamDisplay.SetRepresentationType('Surface With Edges')
@@ -89,63 +90,74 @@ if __name__ == '__main__':
         renderView1.Update()
 
         # set scalar coloring
-        ColorBy(a_foamDisplay, ('CELLS', 'p'))
-        # Hide the scalar bar for this color map if no visible data is colored by it.
-        HideScalarBarIfNotNeeded(pLUT, renderView1)
-        # rescale color and/or opacity maps used to include current data range
+        renderView1.CameraParallelScale = 3
+        ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
-        # show color bar/color legend
-        a_foamDisplay.SetRepresentationType('Surface')
-        a_foamDisplay.SetScalarBarVisibility(renderView1, True)
-        plot(run, "P", renderView1)
+        a_foamDisplay.SetRepresentationType('Surface With Edges')
+        plot(run, "MESH2", renderView1)
 
-        # set scalar coloring
-        ColorBy(a_foamDisplay, ('CELLS', 'U', 'Magnitude'))
-        # Hide the scalar bar for this color map if no visible data is colored by it.
-        HideScalarBarIfNotNeeded(pLUT, renderView1)
-        # rescale color and/or opacity maps used to include current data range
-        a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
-        # show color bar/color legend
-        a_foamDisplay.SetScalarBarVisibility(renderView1, True)
-        # get color transfer function/color map for 'U'
-        uLUT = GetColorTransferFunction('U')
-        plot(run, "U", renderView1)
+        renderView1.ResetCamera()
+        renderView1.Update()
 
-        # set scalar coloring
-        ColorBy(a_foamDisplay, ('CELLS', 'U', 'X'))
-        # rescale color and/or opacity maps used to exactly fit the current data range
-        a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
-        # Update a scalar bar component title.
-        UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
-        plot(run, "U_X", renderView1)
+        # # set scalar coloring
+        # ColorBy(a_foamDisplay, ('CELLS', 'p'))
+        # # Hide the scalar bar for this color map if no visible data is colored by it.
+        # HideScalarBarIfNotNeeded(pLUT, renderView1)
+        # # rescale color and/or opacity maps used to include current data range
+        # a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
+        # # show color bar/color legend
+        # a_foamDisplay.SetRepresentationType('Surface')
+        # a_foamDisplay.SetScalarBarVisibility(renderView1, True)
+        # plot(run, "P", renderView1)
 
-        # set scalar coloring
-        ColorBy(a_foamDisplay, ('CELLS', 'U', 'Y'))
-        # rescale color and/or opacity maps used to exactly fit the current data range
-        a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
-        # Update a scalar bar component title.
-        UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
-        plot(run, "U_Y", renderView1)
+        # # set scalar coloring
+        # ColorBy(a_foamDisplay, ('CELLS', 'U', 'Magnitude'))
+        # # Hide the scalar bar for this color map if no visible data is colored by it.
+        # HideScalarBarIfNotNeeded(pLUT, renderView1)
+        # # rescale color and/or opacity maps used to include current data range
+        # a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
+        # # show color bar/color legend
+        # a_foamDisplay.SetScalarBarVisibility(renderView1, True)
+        # # get color transfer function/color map for 'U'
+        # uLUT = GetColorTransferFunction('U')
+        # plot(run, "U", renderView1)
 
-        # set scalar coloring
-        ColorBy(a_foamDisplay, ('CELLS', 'U', 'Z'))
-        # rescale color and/or opacity maps used to exactly fit the current data range
-        a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
-        # Update a scalar bar component title.
-        UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
-        plot(run, "U_Z", renderView1)
+        # # set scalar coloring
+        # ColorBy(a_foamDisplay, ('CELLS', 'U', 'X'))
+        # # rescale color and/or opacity maps used to exactly fit the current data range
+        # a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
+        # # Update a scalar bar component title.
+        # UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
+        # plot(run, "U_X", renderView1)
 
-        import slice
-        slice1 = slice.sliceXY(a_foam, renderView1,
-                               pLUT, uLUT, run, "U-glyphs")
-        # slice.velocityXYPlot(slice1, renderView1, pLUT, run)
-        slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run)
-        slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=2)
-        slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=0)
+        # # set scalar coloring
+        # ColorBy(a_foamDisplay, ('CELLS', 'U', 'Y'))
+        # # rescale color and/or opacity maps used to exactly fit the current data range
+        # a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
+        # # Update a scalar bar component title.
+        # UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
+        # plot(run, "U_Y", renderView1)
 
-        slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run)
-        slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=1)
-        slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=2)
+        # # set scalar coloring
+        # ColorBy(a_foamDisplay, ('CELLS', 'U', 'Z'))
+        # # rescale color and/or opacity maps used to exactly fit the current data range
+        # a_foamDisplay.RescaleTransferFunctionToDataRange(False, False)
+        # # Update a scalar bar component title.
+        # UpdateScalarBarsComponentTitle(uLUT, a_foamDisplay)
+        # plot(run, "U_Z", renderView1)
+
+        # import slice
+        # slice1 = slice.sliceXY(a_foam, renderView1,
+        #                        pLUT, uLUT, run, "U-glyphs")
+        # # slice.velocityXYPlot(slice1, renderView1, pLUT, run)
+        # slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run)
+        # slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=2)
+        # slice.velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=0)
+        # slice.pressureContour(slice1, renderView1, pLUT, uLUT, run)
+
+        # slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run)
+        # slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=1)
+        # slice.velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=2)
 
     allruns = os.listdir(datapath)
     runs = []
