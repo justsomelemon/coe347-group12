@@ -38,13 +38,13 @@
 
 ## Dictionary of Terms:
 
-# Pi parameters:  
+### Pi parameters:  
 
 Self-explanatory:
 
 - Re : Reynolds Number, ex: `10`
 
-# Key parameters:
+### Key parameters:
 
 Special mesh dimension parameters
 
@@ -56,7 +56,7 @@ Special mesh dimension parameters
 - W : wake (backward) distance as in Prof.'s example, default: `4 + pi.Re*(1/15)`
 - K : +/- distance in Z-axis --- mostly irrelevant for anything in this project, default: `4`
 
-# Param parameters:
+### Param parameters:
 
 Other parameters (typically generated from the above). Most are self explanatory, but some are mentioned here as well.
 
