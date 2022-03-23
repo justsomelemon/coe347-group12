@@ -16,7 +16,7 @@ pathNames = ["constant/transportProperties",
              "system/controlDict", "system/decomposeParDict", "system/probes", "system/singleGraph"]
 bmdpath = "system/blockMeshDict"
 pinames = ['Re']
-keynames = ['f', 'R', 'H', 'F', 'W', 'cores']
+keynames = ['f', 'R', 'R2', 'H', 'F', 'W', 'K', 'cores']
 
 parampath = "param/"
 
@@ -67,6 +67,7 @@ def generateParameters(settings):
             wt = 0.1
 
         # Same here : NEEDS TO BE INT
+        # these ar for feeding into the string in blockMeshDict_utils.py
         AAA = np.array([1*f, 2*f, 1]).astype(str)
         BBB = np.array([3*f, 2*f, 1]).astype(str)
         CCC = np.array([3*f, 3*f, 1]).astype(str)

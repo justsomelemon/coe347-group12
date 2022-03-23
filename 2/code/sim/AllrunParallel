@@ -11,6 +11,7 @@ runApplication decomposePar # decompose the domain
 
 runParallel icoFoam # run the solver 
 
-runApplication reconstructPar # reconstruct the solution
+# runApplication reconstructPar # reconstruct the solution
+reconstructPar -n 96
 
 #------------------------------------------------------------------------------
