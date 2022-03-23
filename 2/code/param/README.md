@@ -54,7 +54,7 @@ Special mesh dimension parameters
 - H : height as in Prof.'s example, default: `4`
 - F : forward distance as in Prof.'s example, default: `4`
 - W : wake (backward) distance as in Prof.'s example, default: `4 + pi.Re*(1/15)`
-- K : +/- distance in Z-axis --- mostly irrelevant for Re in this project, default: `4`
+- K : +/- distance in Z-axis --- mostly irrelevant for anything in this project, default: `4`
 
 # Param parameters:
 
@@ -63,3 +63,5 @@ Other parameters (typically generated from the above). Most are self explanatory
 - 'nu','endTime','writeControl','writeInterval','deltaT' : same as in the OpenFoam files, defaults generated from the above numbers so as to not overwhelm Courant #. The writeInterval is 0.1s by default.
 
 - 'probeLocations','recirculation','cylwall, 'cylnormal_pi4','cylnormal_pi2','cylnormal_3pi4' : OpenFoam slicing parameters that will automatically overwrite the blank spots in `template/system/probes` and `template/system/singleGraph`. Should not be edited directly, due to the size of these values. (This still needs work...)
+
+- 'cores' : # of processor threads, default: `96` (do not change this if you are running on a dual-node setup on TACC as per the Slurm script!)
