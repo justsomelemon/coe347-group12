@@ -53,10 +53,10 @@ def generateParameters(settings):
         # not using a core to leave some headroom.
         if len(os.sched_getaffinity(0)) > 16:
             # this is TACC
-            coreMax = 384
-            cores = 384  # forcing octa-node on TACC
+            coreMax = 192
+            cores = 192  # forcing octa-node on TACC
         else:
-            coreMax = min(len(os.sched_getaffinity(0)), 384)
+            coreMax = min(len(os.sched_getaffinity(0)), 192)
             cores = coreMax - 1
 
         dt = 0.02/f

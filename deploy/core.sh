@@ -57,17 +57,17 @@ folder="${FOLDER}""${PROJECT}"/code
 files="${folder}/runTACC.sh ${folder}/run.slurm ${folder}/analyze.sh ${folder}/param/ ${folder}/sim/ ${folder}/analysis/"
 remote="${USERNAME}"@stampede2.tacc.utexas.edu
 
-echo "[-] INITALIZE : SSH Directories." 
-ssh -tt "${remote}" << EOF 
- cdw
- mkdir -p "${REMOTE}"code 
- mkdir -p "${REMOTE}"code/analysis/
- mkdir -p "${REMOTE}"code/data/
- mkdir -p "${REMOTE}"code/param/
- mkdir -p "${REMOTE}"code/sim/
- mkdir -p "${REMOTE}"plots/
- exit
-EOF
+# echo "[-] INITALIZE : SSH Directories." 
+# ssh -tt "${remote}" << EOF 
+#  cdw
+#  mkdir -p "${REMOTE}"code 
+#  mkdir -p "${REMOTE}"code/analysis/
+#  mkdir -p "${REMOTE}"code/data/
+#  mkdir -p "${REMOTE}"code/param/
+#  mkdir -p "${REMOTE}"code/sim/
+#  mkdir -p "${REMOTE}"plots/
+#  exit
+# EOF
 
 echo ""
 

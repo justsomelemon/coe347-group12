@@ -9,11 +9,13 @@
 
 ### #SBATCH -p normal          # Queue (partition) name
 ### #SBATCH -p development          # Queue (partition) name
-#SBATCH -p skx-normal          # Queue (partition) name
+#SBATCH -p skx-dev          # Queue (partition) name
 
-#SBATCH -N 8               # Total # of nodes
+#SBATCH -N 4               # Total # of nodes
 #SBATCH -n 48               # Total # of mpi tasks
-#SBATCH -t 04:00:00        # Run time (hh:mm:ss)
+#SBATCH -t 02:00:00        # Run time (hh:mm:ss)
+
+### #SBATCH -d=afterok<first_job_d>
 
 #SBATCH --mail-user=akhil.sadam@utexas.edu
 #SBATCH --mail-type=all    # Send email at begin and end of job
@@ -26,7 +28,7 @@ pwd
 date
 
 echo "[+] RUN : MODULE LOAD." 
-export OMP_NUM_THREADS=384
+export OMP_NUM_THREADS=192
 module purge
 module load intel/18.0.2  libfabric/1.7.0  impi/18.0.2 
 module load python3

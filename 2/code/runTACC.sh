@@ -66,6 +66,7 @@ do
                 echo "-\ CD"
                 cd ../../param/
                 echo "-/| DONE |"
+                exit 0
             fi
     esac
 done
