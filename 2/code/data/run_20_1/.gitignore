@@ -3,4 +3,5 @@
 ??/*
 ??.?/*
 !postProcessing
-!log.*
+!log.blockMesh
+!log.checkMesh
