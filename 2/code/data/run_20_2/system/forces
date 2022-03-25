@@ -8,7 +8,9 @@
 
 forces
 {
+
     type          forces;
+    fields        (p U);
 
     libs          ("libforces.so");
 

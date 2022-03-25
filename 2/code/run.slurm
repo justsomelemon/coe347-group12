@@ -40,7 +40,7 @@ wait $process_id
 echo "[+] RUN : SLURM RUN - Exit status: $?"
 echo "[+] ANALYZE : MODULE LOAD" 
 module purge
-module load gcc/9.1.0 impi/19.0.9 swr/21.2.5 qt5/5.14.2 oneapi_rk/2021.4.0 ospray  
+module load gcc/9.1.0 impi/19.0.9 swr/21.2.5 qt5/5.14.2 oneapi_rk/2021.4.0
 module load python3
 module load paraview-osmesa
 echo "[+] ANALYZE : Python Dependencies INSTALL" 

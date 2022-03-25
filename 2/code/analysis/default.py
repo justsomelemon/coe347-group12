@@ -81,7 +81,7 @@ if __name__ == '__main__':
 
         # set scalar coloring
         renderView1.CameraParallelScale = 6
-        ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
+        # ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
         a_foamDisplay.SetRepresentationType('Surface With Edges')
         plot(run, "MESH", renderView1)
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
         # set scalar coloring
         renderView1.CameraParallelScale = 3
-        ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
+        # ColorBy(a_foamDisplay, ('CELLS', 'cellNormals', 'Magnitude'))
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
         a_foamDisplay.SetRepresentationType('Surface With Edges')
         plot(run, "MESH2", renderView1)
