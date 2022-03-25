@@ -5,7 +5,7 @@
 
 # 1) copy parameters from param/{i}/ to sim/
 # 2) run simulation
-# 3) move output to data/{i}/ 
+# 3) move output to data/{i}/
 # 4) delete parameter files from simulation directory
 
 runnames=*run_* # all appropriate runs start with `run_`!
@@ -34,7 +34,7 @@ do
                 echo "-\ Allclean"
                 ./Allclean
                 echo "-\ Allrun"
-                { time ./AllrunParallel 2>> time.txt ; } 
+                { time ./AllrunParallel 2>> time.txt ; }
                 echo "-\ Simulation Complete."
                 echo "-\ Post-processing via Sample..."
                 # postProcess -func sample -latestTime
@@ -42,7 +42,7 @@ do
                 postProcess -func probes
                 echo "-\ Complete."
                 echo "-\ Copying Data..."
-                rm -r processor*
+                //rm -r processor*
                 for step in $(ls -d *[0-9]*)
                 do
                     mkdir -p ../data/"$run"
@@ -50,7 +50,10 @@ do
                 done
                 mv constant/ ../data/"$run"
                 mv postProcessing/ ../data/"$run"
+                mv processor* ../data/"$run"
                 mv log.* ../data/"$run"
+                mv system/ ../data/"$run"
+                mv README.md ../data/"$run"
                 echo "-\ Sweeping Dirt ..."
                 # ./Allclean
                 rm -r system/
@@ -79,4 +82,4 @@ do
 done
 echo "  | CD |"
 cd ../
-echo "-/| DONE RUNNING---------------=||= - - -\\\\"    
+echo "-/| DONE RUNNING---------------=||= - - -\\\\"
