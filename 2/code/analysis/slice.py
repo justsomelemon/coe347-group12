@@ -77,7 +77,7 @@ def velocityXYPlot(slice1, renderView1, pLUT, run):
     glyph1Display.SetRepresentationType('Surface')
     glyph1Display.Opacity = 1.0
     # set scalar coloring
-    renderView1.Background = [0.0, 0.0, 0.0]
+    renderView1.Background = [1.0, 1.0, 1.0]
 
     glyph1Display = Show(glyph1, renderView1)
     default.plot(run, "U-glyphs", renderView1)
@@ -91,6 +91,9 @@ def velocityXYPlot(slice1, renderView1, pLUT, run):
 
 def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
     # info = sm.Fetch(slice1)
+
+    pLUT.ApplyPreset('Viridis (matplotlib)', True)
+    uLUT.ApplyPreset('Viridis (matplotlib)', True)
 
     # #options for component: -1, 0, 1 and 2 => Mag, X, Y, Z
     # component = -1
@@ -145,6 +148,8 @@ def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
 
 
 def pressureContour(slice1, renderView1, pLUT, uLUT, run, n=100):
+    pLUT.ApplyPreset('Viridis (matplotlib)', True)
+    uLUT.ApplyPreset('Viridis (matplotlib)', True)
     # info = sm.Fetch(slice1)
     # cdi = slice1.GetDataInformation().GetCompositeDataInformation()
     # for i in range(cdi.GetNumberOfChildren()):
@@ -191,6 +196,14 @@ def pressureContour(slice1, renderView1, pLUT, uLUT, run, n=100):
 
 
 def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
+
+    # pLUT.ApplyPreset('erdc_blue2cyan_BW', True)
+    # uLUT.ApplyPreset('erdc_blue2cyan_BW', True)
+    # pLUT.ApplyPreset('Rainbow Desaturated', True)
+    # uLUT.ApplyPreset('Rainbow Desaturated', True)
+    pLUT.ApplyPreset('Spectral_lowBlue', True)
+    uLUT.ApplyPreset('Spectral_lowBlue', True)
+
     ids = ['', '_X', '_Y', '_Z']
     id2s = ['Magnitude', 'X', 'Y', 'Z']
     id = ids[ax]
@@ -225,8 +238,8 @@ def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
     # show color bar/color legend
     streamTracer1Display.SetScalarBarVisibility(renderView1, True)
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Point1 = [2, 4.0, 0]
-    streamTracer1.SeedType.Point2 = [2, -4.0, 0]
+    streamTracer1.SeedType.Point1 = [1.5, 4.0, 0]
+    streamTracer1.SeedType.Point2 = [1.5, -4.0, 0]
     # update the view to ensure updated data information
     renderView1.Update()
     # Rescale transfer function

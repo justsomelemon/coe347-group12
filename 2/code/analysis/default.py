@@ -14,7 +14,7 @@ def plot(run, number, renderView1):
     # save screenshot
     SaveScreenshot(plotpath(run, number), renderView1, ImageResolution=resolution,
                    OverrideColorPalette='PrintBackground',
-                   TransparentBackground=1)
+                   TransparentBackground=0)
 
 
 resolution = [1000, 800]
@@ -41,6 +41,10 @@ if __name__ == '__main__':
         renderView1.ViewSize = resolution
         # get color transfer function/color map for 'p'
         pLUT = GetColorTransferFunction('p')
+        pLUT.ApplyPreset('Cool to Warm (Extended)', True)
+        # get color transfer function/color map for 'U'
+        uLUT = GetColorTransferFunction('U')
+        uLUT.ApplyPreset('Cool to Warm (Extended)', True)
         # get opacity transfer function/opacity map for 'p'
         pPWF = GetOpacityTransferFunction('p')
         # show data in view
@@ -118,8 +122,7 @@ if __name__ == '__main__':
         a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
         # show color bar/color legend
         a_foamDisplay.SetScalarBarVisibility(renderView1, True)
-        # get color transfer function/color map for 'U'
-        uLUT = GetColorTransferFunction('U')
+
         plot(run, "U", renderView1)
 
         # set scalar coloring

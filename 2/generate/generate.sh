@@ -145,8 +145,8 @@ if [ "$rlang" = true ] ; then
 	cd $src$rstudio
 	Rscript -e 'pagedown::chrome_print('"'article.rmd'"')' > log_r.txt
 
-	make4ht article.tex styling/template.tex --config styling/mk4ht
-	texify.exe --pdf --synctex=1 --clean article.tex
+	# make4ht article.tex styling/template.tex --config styling/mk4ht
+	# texify.exe --pdf --synctex=1 --clean article.tex
 	files="$(ls -I.git -I*.txt -I*.html -I*.css -I*.pdf -I*.json -I*.gif -I*.jpg -I*.png -I*.sh -Iio*.* -Ipackages.bib -p | grep -v /)"
 	rm $files
 

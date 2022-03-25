@@ -47,6 +47,8 @@
 
 - `RStudio` (optional)  
 
+NOTE: the R script `generate.sh` will need to be run from a `Windows Powershell as Admin` if you are @akhilsadam. Other users, your mileage may really vary, since this issue is due to a poor installation.
+
 ## to install  
 - please just clone the repository; at present there is no deployment.  
 - in the future we *may* use Docker if absolutely necessary

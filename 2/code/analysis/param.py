@@ -53,10 +53,10 @@ def generateParameters(settings):
         # not using a core to leave some headroom.
         if len(os.sched_getaffinity(0)) > 16:
             # this is TACC
-            coreMax = 192
-            cores = 192  # forcing quad core on TACC
+            coreMax = 384
+            cores = 384  # forcing octa-node on TACC
         else:
-            coreMax = min(len(os.sched_getaffinity(0)), 48*4)
+            coreMax = min(len(os.sched_getaffinity(0)), 384)
             cores = coreMax - 1
 
         dt = 0.02/f
@@ -87,6 +87,29 @@ def generateParameters(settings):
 
     if key.cores > key.coreMax:
         key.cores = key.coreMax
+
+    def updateKey(f):
+
+        key.dt = 0.02/f
+
+        key.T0 = (key.F+key.W)/U
+
+        if pi.Re > TDREH:
+            key.et = 6*key.T0
+            key.wt = 0.1
+        else:
+            et = key.T0+0.3
+            wt = 0.1
+
+        # Same here : NEEDS TO BE INT
+        # these ar for feeding into the string in blockMeshDict_utils.py
+        key.AAA = np.array([1*f, 2*f, 1]).astype(str)
+        key.BBB = np.array([3*f, 2*f, 1]).astype(str)
+        key.CCC = np.array([3*f, 3*f, 1]).astype(str)
+        key.DDD = np.array([2*f, 3*f, 1]).astype(str)
+        key.EEE = np.array([int(1.5*f), 3*f, 1]).astype(str)
+        key.FFF = np.array([int(1.5*f), 2*f, 1]).astype(str)
+    updateKey(key.f)
 
     # param defaults
 

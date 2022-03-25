@@ -7,15 +7,15 @@ biblio-style: dcu
 iopams: false
 twocolumn: false
 output: 
-  rticles::elsevier_article:
-    keep_tex: yes
-    number_sections: yes
-    latex_engine: pdflatex
+  pagedown::jss_paged:
+    self_contained: true
+    pandoc_args: --mathjax
+    md_extensions: +raw_html
 knit: pagedown::chrome_print
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE,fig.align = 'center')
+knitr::opts_chunk$set(echo = FALSE,fig.align = 'center',fig.width=3.5,fig.height=2.5,out.width = "20%")
 #require(magick)
 library("jpeg")
 require("R.utils")

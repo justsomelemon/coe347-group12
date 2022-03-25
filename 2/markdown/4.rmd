@@ -1,0 +1,12 @@
+# Unsteady Flow and Strouhal Number  
+
+We now use the simulations `run_110_3`, `run_110_4`, and `run_110_2` to calculate an approximate Strouhal number: $St=\frac{f}{U/D}=\i{fcn}(Re)$.  
+
+The sole difference between these runs is the blockMeshFactor parameter, which increases block density and decreases timestep.  
+
+Probes were placed at $(x,y)=(5.5,\pm0.5)$, and a Fourier Transform of the nondimensionalized y-velocity was taken with respect to nondimensionalized time, s.t. the highest amplitude resultant frequency is the Strouhal number. Agreement between Strouhal numbers calculated for each probe was verified.
+
+A table of results follows:  
+
+- Mesh  |  St    | timestep   
+- 110_2  0.270270  0.000555556;
