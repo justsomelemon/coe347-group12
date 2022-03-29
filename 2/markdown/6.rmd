@@ -1,0 +1,20 @@
+# Drag Coefficient for Re=20:  
+
+Calculation of force on the cylinder can be done by implementing a simple control volume approach, by measuring the far-field pressure and velocity at the inlet and outlet as follows. Note all units are non-dimensionalized, and the force is per unit length (of the cylinder).  
+
+By momentum conservation, we have the following, where y is the vertical dimension perpendicular to the cylinder axis and the fluid's general velocity. Note the inlet-outlet notation denotes a pair of integrals for the inlet and outlet, subtracted from each other.  
+
+$$F=\int_{inlet-outlet} p \,dy + \int_{inlet-outlet} \frac{\partial{\vec{p}}}{\partial{t}} $$
+
+$$\implies F=\int_{inlet-outlet} p \,dy + \int_{inlet-outlet} \rho\|{\vec{u}}\|\vec{u}_x \partial{y}$$  
+
+Note this is trivial to calculate, since all the values are non-dimensionalized by OpenFoam.   
+
+The resulting force is 1.358 in units of $\rho U^{2}L$, which becomes a Cd of 2.717.  
+
+Comparing this to results from Tritton (Physical Fluid Dynamics, 1977), and Heddleson et. al. (Summary of Drag Coefficients of Various Shaped Cylinders), we expect a Cd around 2.4 for a Reynolds number of 20, and our result becomes reasonable. Reference images from Tritton and Heddleson are attached below.  
+
+![](../plots/10/Tritton.jpg)  
+
+
+![](../plots/10/Heddleson.jpg)  
