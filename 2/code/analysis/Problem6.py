@@ -9,11 +9,13 @@ import itertools as it
 # just run and it will do everything
 
 
-def data(run, type):
+def data(run, type, filepath=None):
+
+    if filepath is None:
+        filepath = f"../data/{run}/postProcessing/probes/0/{type}"
 
     varlen = 7 if type == 'U' else 3
 
-    filepath = f"../data/{run}/postProcessing/probes/0/{type}"
     with open(filepath, 'r') as file:
         text = file.read()
     text = text.replace("(", "").replace(")", "").replace(
@@ -55,7 +57,8 @@ def plot(name, type):
     plt.close()
 
 
-names = ["run_110_1", "run_110_2"]
-types = ["U", "p"]
-for n, t in it.product(names, types):
-    plot(n, t)
+if __name__ == '__main__':
+    names = ["run_110_1", "run_110_2"]
+    types = ["U", "p"]
+    for n, t in it.product(names, types):
+        plot(n, t)

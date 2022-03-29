@@ -45,7 +45,7 @@ sets
         axis    xyz;
         // cylnormal_3pi4 
 	start   (5 4 0);
-	end     (-5 -4 0);
+	end     (5 -4 0);
                     
     }
 
