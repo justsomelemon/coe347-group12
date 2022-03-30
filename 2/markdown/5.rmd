@@ -42,6 +42,11 @@ We define those components as follows.
 
 We see that as the mesh resolution becomes finer, the values for $e_{rr}$ and $e_r\theta$ do converge, but not nearly as quickly as the velocity field does (as seen in the above plots)!
 
+This is also seen in the plots of the rate of strain tensor components vs $\delta$ (where delta is defined as in the previous diagram.  
+
+![](../plots/9/rate_tensor_pi4.jpg)  
+![](../plots/9/rate_tensor_pi2.jpg)  
+![](../plots/9/rate_tensor_3pi4.jpg)  
 
 Note the L/D recirculation length is expected from the results in Park et. al. As seen in the below image, Park et. al. also predict a recirculation length of about 0.8 diameters.   
 
