@@ -145,9 +145,9 @@ def generateParameters(settings):
                 f"""\n        \tstart   (0.5 0 0);
                 end     ({str(key.W)} 0 0);
                     """,
-                'cylwall':
-                f"""\n\tpoints   ({cylwallpoints});
-                    """,
+                # 'cylwall':
+                # f"""\n\tpoints   ({cylwallpoints});
+                #     """,
                 'cylnormal_pi4':
                 f"""\n\tstart   ({cylpi4[0]});\n\tend     ({cylpi4[1]});
                     """,
