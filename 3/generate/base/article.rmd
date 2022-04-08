@@ -1,0 +1,57 @@
+---
+{HEADER-REPLACE}
+links-to-footnotes: false
+paged-footnotes: true
+bibliography: packages.bib
+biblio-style: dcu
+iopams: false
+twocolumn: false
+output: 
+  pagedown::jss_paged:
+    self_contained: true
+    pandoc_args: --mathjax
+    md_extensions: +raw_html
+knit: pagedown::chrome_print
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,fig.align = 'center',fig.width=3.5,fig.height=2.5,out.width = "20%")
+#require(magick)
+library("jpeg")
+require("R.utils")
+library("animation")
+options(tinytex.verbose = TRUE)
+```
+
+```{r variablesetup, include=TRUE, echo=FALSE,results=FALSE}
+imgdir_path<-Sys.getenv("rstudio_img")
+imgdir<-imgdir_path[1]
+
+print(paste("IMG Directory:",imgdir))
+outdir_path<-Sys.getenv("rstudio_out_img")
+outdir<-outdir_path[1]
+
+print(paste("OUT Directory:",outdir))
+
+imshow <- function(imgname)
+{
+  fig.dim = c(0.75, 1)
+  jj <- readJPEG(paste(imgdir,"/",imgname,sep=""),native=TRUE)
+  par(mar=c(0,0,0,0),xaxs = 'i',yaxs='i')
+  plot(0:1,0:1,type="n",ann=FALSE,axes=FALSE)
+  rasterImage(jj,0,0,1,1) 
+}
+```
+  
+{CONTENT-REPLACE}
+
+```{=html}
+<!-- This '<div id="refs"></div>' needs to 
+be here if you have appendix pages 
+otherwise you can remove it.-->
+```
+::: {#refs}
+:::
+
+# Appendix {-}
+Thank you so much for reading this work!

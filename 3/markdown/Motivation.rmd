@@ -1,0 +1,4 @@
+# Motivation  
+
+The flow around an infinite, circular cylinder is a well-studied, but yet not completely understood problem in CFD (computational fluid dynamics). A simple exploration of the steady and unsteady flow at low Reynolds numbers is undertaken here, to provide a light overview of the problem.  
+

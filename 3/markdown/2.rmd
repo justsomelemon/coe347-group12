@@ -1,0 +1,19 @@
+# Preliminary Solutions
+
+We assemble a set of preliminary solutions for Reynolds number 20 and 110 (the previous meshes). The Re=20 mesh will be shown first.  
+Three contour plots will be shown: $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$, along with a streamline plot.  
+For Re=110 (the unsteady case), a time history of $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$ at $(x,y)=(5.5,\pm0.5)$ versus normalized time $\frac{t}{\frac{D}{U}}$.  
+
+Note data for a couple of points (about 0.1%) was imputed due to file errors.  
+
+- `run_20_1`:  
+  
+![](../plots/run_20_1/run_20_1_U-X_contour.jpg)  ![](../plots/run_20_1/run_20_1_U-Y_contour.jpg)  ![](../plots/run_20_1/run_20_1_p_contour.jpg)  ![](../plots/run_20_1/run_20_1_U-Magnitude_streamlines.jpg)    
+
+- `run_110_1`:   
+
+![](../plots/run_110_1/run_110_1_U-X_contour.jpg)  ![](../plots/run_110_1/run_110_1_U-Y_contour.jpg)  ![](../plots/run_110_1/run_110_1_p_contour.jpg)  ![](../plots/run_110_1/run_110_1_U-Magnitude_streamlines.jpg)     
+
+Time History plots for `run_110_1`:   
+
+![](../plots/run_110_1/Time_U.jpg)  ![](../plots/run_110_1/Time_P.jpg) 

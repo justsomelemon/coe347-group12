@@ -1,0 +1,8 @@
+?/*
+?.?/*
+??/*
+??.?/*
+!postProcessing
+!log.blockMesh
+!log.checkMesh
+!log.rhoCentralFoam

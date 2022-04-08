@@ -1,0 +1,8 @@
+Make:add("biber","biber ${input}")
+Make:htlatex {}
+Make:biber {}
+Make:htlatex {}
+Make:htlatex {}
+Make:tex4ht {}
+Make:t4ht {}
+Make:match("html$", "tidy -m -xml -utf8 -q -i ${filename}")
