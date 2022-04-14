@@ -2,17 +2,17 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  9
+    \\  /    A nd           | Version:  7
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-Build  : 9-b456138dc4bc
+Build  : 7-49b2b3b8b082
 Exec   : checkMesh
-Date   : Apr 08 2022
-Time   : 11:41:34
-Host   : "MITT-UNIX"
-PID    : 23285
+Date   : Apr 13 2022
+Time   : 23:36:04
+Host   : "c428-102.stampede2.tacc.utexas.edu"
+PID    : 241470
 I/O    : uncollated
-Case   : /home/mitt-unix/Desktop/geant4LX/openFOAM/COE347/coe347-group12/3/code/sim
+Case   : /work2/07752/as_tacc/stampede2/openfoam/code/sim
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -76,7 +76,7 @@ Checking geometry...
     Mesh non-orthogonality Max: 0 average: 0
     Non-orthogonality check OK.
     Face pyramids OK.
-    Max skewness = 2.66454e-14 OK.
+    Max skewness = 2.47665e-14 OK.
     Coupled point location match (average 0) OK.
 
 Mesh OK.

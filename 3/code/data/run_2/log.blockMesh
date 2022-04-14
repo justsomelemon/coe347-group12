@@ -2,17 +2,17 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  9
+    \\  /    A nd           | Version:  7
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-Build  : 9-b456138dc4bc
+Build  : 7-49b2b3b8b082
 Exec   : blockMesh
-Date   : Apr 08 2022
-Time   : 11:41:34
-Host   : "MITT-UNIX"
-PID    : 23284
+Date   : Apr 13 2022
+Time   : 23:36:03
+Host   : "c428-102.stampede2.tacc.utexas.edu"
+PID    : 241463
 I/O    : uncollated
-Case   : /home/mitt-unix/Desktop/geant4LX/openFOAM/COE347/coe347-group12/3/code/sim
+Case   : /work2/07752/as_tacc/stampede2/openfoam/code/sim
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -21,10 +21,8 @@ allowSystemOperations : Allowing user-supplied system call operations
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 Create time
 
-Reading "blockMeshDict"
-
 Creating block mesh from
-    "system/blockMeshDict"
+    "/work2/07752/as_tacc/stampede2/openfoam/code/sim/system/blockMeshDict"
 Creating block edges
 No non-planar block faces defined
 Creating topology blocks
@@ -32,7 +30,7 @@ Creating topology patches
 
 Creating block mesh topology
 --> FOAM Warning : 
-    From function Foam::polyMesh::polyMesh(const Foam::IOobject&, Foam::pointField&&, const cellShapeList&, const faceListList&, const wordList&, const Foam::PtrList<Foam::dictionary>&, const Foam::word&, const Foam::word&, bool)
+    From function Foam::polyMesh::polyMesh(const Foam::IOobject &, Foam::Field<Foam::Vector<double>> &&, const Foam::List<Foam::cellShape> &, const Foam::List<Foam::List<Foam::face>> &, const Foam::List<Foam::word> &, const Foam::PtrList<Foam::dictionary> &, const Foam::word &, const Foam::word &, bool)
     in file meshes/polyMesh/polyMeshFromShapeMesh.C at line 873
     Found 6 undefined faces in mesh; adding to default patch.
 
@@ -49,8 +47,6 @@ Creating block offsets
 Creating merge list .
 
 Creating polyMesh from blockMesh
-Creating patches
-Creating cells
 Creating points with scale 1
     Block 0 cell size :
         i : 0.1 .. 0.1
@@ -64,6 +60,8 @@ Creating points with scale 1
         i : 0.1 .. 0.1
         j : 0.1 .. 0.1
         k : 0.1
+Creating cells
+Creating patches
 
 Writing polyMesh
 ----------------

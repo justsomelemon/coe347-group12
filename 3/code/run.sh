@@ -28,44 +28,53 @@ do
             then
                 echo "Data Exists. Skipping Run $run."
             else
-                echo "-\ Copying Files..."
-                cp -r "$run"* ../sim
-                echo "-\ CD"
-                cd ../sim/
-                echo "-\ Staging"
-                # python ../analysis/sample.py
-                echo "-\ Allclean"
-                ./Allclean
-                echo "-\ Allrun"
-                { time ./AllrunParallel2 2>> time.txt ; } 
-                echo "-\ Simulation Complete."
-                echo "-\ Post-processing via Sample..."
-                # postProcess -func sample -latestTime
-                postProcess -func singleGraph -latestTime
-                # postProcess -func probes
-                echo "-\ Complete."
-                echo "-\ Copying Data..."
-                rm -r processor*
-                for step in $(ls -d *[0-9]*)
-                do
-                    mkdir -p ../data/"$run"
-                    mv -f "$step"/ ../data/"$run"
-                done
-                mv constant/ ../data/"$run"
-                mv postProcessing/ ../data/"$run"
-                mv log.* ../data/"$run"
-                echo "-\ Sweeping Dirt ..."
-                # ./Allclean
-                rm -r system/
-                rm README.md
-                # rm sets.txt
-                echo "-\ CD"
-                cd ../data/"$run"/
-                echo "-\ Creating _.Foam ..."
-                touch _.foam
-                echo "-\ CD"
-                cd ../../param/
-                echo "-/| DONE |"
+                if [[ -d "../work/$run" ]]
+                then
+                    echo "Data currently simulating. Skipping Run $run."
+                else
+                    echo "-\ Copying Files..."
+                    mkdir -p ../work/"$run"
+                    cp -r "$run"* ../work/"$run"
+                    cp -r ../sim/* ../work/"$run"
+                    echo "-\ CD"
+                    cd ../work/"$run"/
+                    echo "-\ Staging"
+                    # python ../analysis/sample.py
+                    echo "-\ Allclean"
+                    ./Allclean
+                    echo "-\ Allrun"
+                    { time ./AllrunParallel2 2>> time.txt ; } 
+                    echo "-\ Simulation Complete."
+                    echo "-\ Post-processing via Sample..."
+                    # postProcess -func sample -latestTime
+                    postProcess -func singleGraph -latestTime
+                    # postProcess -func probes
+                    echo "-\ Complete."
+                    echo "-\ Copying Data..."
+                    rm -r processor*
+                    for step in $(ls -d *[0-9]*)
+                    do
+                        mkdir -p ../../data/"$run"
+                        mv -f "$step"/ ../../data/"$run"
+                    done
+                    mv constant/ ../../data/"$run"
+                    mv postProcessing/ ../../data/"$run"
+                    mv log.* ../../data/"$run"
+                    echo "-\ Sweeping Dirt ..."
+                    # ./Allclean
+                    rm -r system/
+                    rm README.md
+                    cd ../
+                    rm "$run"
+                    # rm sets.txt
+                    echo "-\ CD"
+                    cd ../data/"$run"/
+                    echo "-\ Creating _.Foam ..."
+                    touch _.foam
+                    echo "-\ CD"
+                    cd ../../param/
+                    echo "-/| DONE |"
+                fi
             fi
     esac
 done

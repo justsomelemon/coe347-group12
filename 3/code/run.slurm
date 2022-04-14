@@ -13,9 +13,9 @@
 
 #SBATCH -N 1               # Total # of nodes
 #SBATCH -n 64              # Total # of mpi tasks
-#SBATCH -t 02:00:00        # Run time (hh:mm:ss)
+#SBATCH -t 2:00:00        # Run time (hh:mm:ss)
 
-### #SBATCH -d=afterok:<first_job_d>
+### #SBATCH -d=afterok:9464105
 
 #SBATCH --mail-user=akhil.sadam@utexas.edu
 #SBATCH --mail-type=all    # Send email at begin and end of job
