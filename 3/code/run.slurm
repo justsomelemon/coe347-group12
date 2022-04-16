@@ -12,8 +12,8 @@
 ### #SBATCH -p skx-dev          # Queue (partition) name
 
 #SBATCH -N 1               # Total # of nodes
-#SBATCH -n 64              # Total # of mpi tasks
-#SBATCH -t 2:00:00        # Run time (hh:mm:ss)
+#SBATCH -n 16             # Total # of mpi tasks
+#SBATCH -t 48:00:00        # Run time (hh:mm:ss)
 
 ### #SBATCH -d=afterok:9464105
 

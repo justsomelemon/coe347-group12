@@ -210,9 +210,17 @@ if __name__ == '__main__':
 
     allruns = os.listdir(datapath)
     runs = []
+    denylist = ['run_126_1', 'run_126_2', 'run_126_4',
+                'run_126_8', 'run_126_16', 'run_126_32', 'run_126_64']
     for run in allruns:
         if 'run_' in run:
             runs.append(run)
     for run in runs:
         print("Plotting for Run {}".format(run))
-        runDefaultProcessing(run)
+        try:
+            foamfile = datapath+run+"/_.foam"
+            # print(foamfile)
+            if os.path.isfile(foamfile) and run not in denylist:
+                runDefaultProcessing(run)
+        except:
+            print("Run {} does not have plottable information.".format(run))
