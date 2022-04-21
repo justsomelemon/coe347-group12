@@ -1,0 +1,5 @@
+# References {.unnumbered}
+
+```{r, include=FALSE}
+#knitr::write_bib(c('knitr', 'rmarkdown', 'jpeg', 'R.utils', 'animation'), 'packages.bib')
+```

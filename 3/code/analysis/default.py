@@ -103,6 +103,32 @@ if __name__ == '__main__':
         renderView1.Update()
 
         # set scalar coloring
+        ColorBy(a_foamDisplay, ('CELLS', 'rho'))
+        # Hide the scalar bar for this color map if no visible data is colored by it.
+        HideScalarBarIfNotNeeded(pLUT, renderView1)
+        # rescale color and/or opacity maps used to include current data range
+        a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
+        # show color bar/color legend
+        a_foamDisplay.SetRepresentationType('Surface')
+        a_foamDisplay.SetScalarBarVisibility(renderView1, True)
+        plot(run, "rho", renderView1)
+        HideScalarBarIfNotNeeded(pLUT, renderView1)
+        a_foamDisplay.SetScalarBarVisibility(renderView1, False)
+
+        # set scalar coloring
+        ColorBy(a_foamDisplay, ('CELLS', 'T'))
+        # Hide the scalar bar for this color map if no visible data is colored by it.
+        HideScalarBarIfNotNeeded(pLUT, renderView1)
+        # rescale color and/or opacity maps used to include current data range
+        a_foamDisplay.RescaleTransferFunctionToDataRange(True, False)
+        # show color bar/color legend
+        a_foamDisplay.SetRepresentationType('Surface')
+        a_foamDisplay.SetScalarBarVisibility(renderView1, True)
+        plot(run, "T", renderView1)
+        HideScalarBarIfNotNeeded(pLUT, renderView1)
+        a_foamDisplay.SetScalarBarVisibility(renderView1, False)
+
+        # set scalar coloring
         ColorBy(a_foamDisplay, ('CELLS', 'p'))
         # Hide the scalar bar for this color map if no visible data is colored by it.
         HideScalarBarIfNotNeeded(pLUT, renderView1)

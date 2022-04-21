@@ -1,4 +1,7 @@
 # Motivation  
 
-The flow around an infinite, circular cylinder is a well-studied, but yet not completely understood problem in CFD (computational fluid dynamics). A simple exploration of the steady and unsteady flow at low Reynolds numbers is undertaken here, to provide a light overview of the problem.  
+The flow over a Mach 3 step is a well-studied problem in CFD (computational fluid dynamics), making it a good choice for convergence and performance studies. A simple set of studies are undertaken here.  
+
+  
+
 

@@ -1,47 +1,38 @@
-# Mesh Improvement  
+# Parallel Performance Improvements
 
-We can see that the mesh extent is fairly adequate, except possibly the height (H) for Re=110. All boundary flow is not perturbed, with the exception of the aforementioned region. We can also see vortices for the Re=110 case, and the inner block does not cause any boundary issues, so we will make only the following minor changes to each mesh.  
+Define the speedup as the time taken for one processor ($T(1)$) divided by the time taken for $P$ processors ($T(P)$). Similarly, let the parallel efficiency $\eta$ be the speedup divided by $P$.  
 
-For the mesh `run_20_1`, we will increase the blockMeshFactor from 10 to 15 (so a block increase of ~2.25). This mesh will be called `run_20_2`.    
-
-For the mesh `run_110_1`, we will increase height (H) from 4 to 6. This mesh will be called `run_110_2`.  
+Note that the tables report the total $T(P)$, not that of single steps. The single step $T(P)$ is used instead for the plots.
 
 
-## Mesh Files  
+On a mesh of 64512 cells, for $P$ ranging from 1 to 64 in steps of 2, the following scaling is obtained.  
 
-Files for the new meshes are listed below.
- 
-BlockMeshDict files are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_2/system/blockMeshDict">run_20_2</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_2/system/blockMeshDict">run_110_2</a>,
-blockMesh logs are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_2/log.blockMesh">run_20_2</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_2/log.blockMesh">run_110_2</a>,  
-checkMesh logs are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_2/log.checkMesh">run_20_2</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_2/log.checkMesh">run_110_2</a>.  
-
-
-## Mesh Figures  
-
-Mesh images are shown here, for detail comparision. We will show the `run_20_1` mesh first and then the `run_110_1` mesh.
-
-- `run_20_2`:  
-
-![](../plots/run_20_2/run_20_2_MESH.jpg)  ![](../plots/run_20_2/run_20_2_MESH2.jpg)  
-
-- `run_110_2`:
-![](../plots/run_110_2/run_110_2_MESH.jpg)  ![](../plots/run_110_2/run_110_2_MESH2.jpg)   
+$T(P)$    Speedup    $\eta$   
+4870.28    1.0000    1.0000    
+2745.57    1.7738    0.8869    
+1493.30    3.2614    0.8154        
+0865.21    5.6290    0.7036      
+0513.54    9.4837    0.5927    
+0337.99    14.409    0.4503    
+0247.94    19.642    0.3069     
 
 
-## Solutions
+![](../plots/7/Eta_Case_32.jpeg)  
 
-The Re=20 mesh will be shown first.  
-The same three contour plots will be shown: $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$, along with a streamline plot.  
-For Re=110 (the unsteady case), a time history of $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$ at $(x,y)=(5.5,\pm0.5)$ versus normalized time $\frac{t}{\frac{D}{U}}$.  
+A slightly improved scaling is obtained for a mesh of 1000188 cells.  
 
-- `run_20_2`:   
+$T(P)$       Speedup    $\eta$   
+270763.66    1.0000    1.0000    
+034192.10    2.0239    1.0119    
+034129.40    3.9783    0.9946
+039850.40    7.6188    0.9524    
+021542.00    14.094    0.8808          
+012256.70    24.765    0.7739        
+008170.29    37.171    0.5808    
 
-![](../plots/run_20_2/run_20_2_U-X_contour.jpg)  ![](../plots/run_20_2/run_20_2_U-Y_contour.jpg)  ![](../plots/run_20_2/run_20_2_p_contour.jpg)  ![](../plots/run_20_1/run_20_1_U-Magnitude_streamlines.jpg)    
 
-- `run_110_2`:   
+![](../plots/7/Eta_Case_126.jpeg)  
 
-![](../plots/run_110_2/run_110_2_U-X_contour.jpg)  ![](../plots/run_110_2/run_110_2_U-Y_contour.jpg)  ![](../plots/run_110_2/run_110_2_p_contour.jpg)  ![](../plots/run_110_2/run_110_2_U-Magnitude_streamlines.jpg)     
 
-Time History plots for `run_110_2`:  
- 
-![](../plots/run_110_2/Time_U.jpg)  ![](../plots/run_110_2/Time_P.jpg) 
+Clearly the larger mesh case scales much more nicely, which can be expected due to the more even load distribution.   
+

@@ -12,6 +12,8 @@ output:
     pandoc_args: --mathjax
     md_extensions: +raw_html
 knit: pagedown::chrome_print
+header-includes:
+- \usepackage{pdfpages}
 ---
 
 ```{r setup, include=FALSE}

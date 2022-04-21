@@ -1,19 +1,81 @@
-# Preliminary Solutions
+# Convergence  
 
-We assemble a set of preliminary solutions for Reynolds number 20 and 110 (the previous meshes). The Re=20 mesh will be shown first.  
-Three contour plots will be shown: $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$, along with a streamline plot.  
-For Re=110 (the unsteady case), a time history of $\frac{u}{U}$, $\frac{v}{U}$, $\frac{p}{\rho U^2}$ at $(x,y)=(5.5,\pm0.5)$ versus normalized time $\frac{t}{\frac{D}{U}}$.  
+Three meshes were used, with increasing numbers of cells and smaller timesteps, as follows: (note the timesteps are approximate as the solver, RhoCentralFoam, adjusts timesteps as necessary to maintain a maximum Courant number of 0.2).
 
-Note data for a couple of points (about 0.1%) was imputed due to file errors.  
+Run_10_64 : 6300  cells, dx = 0.04000, dt = 0.00110  
+Run_20_64 : 25200 cells, dx = 0.02000, dt = 0.00056  
+Run_32_64 : 64512 cells, dx = 0.00625, dt = 0.00034  
 
-- `run_20_1`:  
-  
-![](../plots/run_20_1/run_20_1_U-X_contour.jpg)  ![](../plots/run_20_1/run_20_1_U-Y_contour.jpg)  ![](../plots/run_20_1/run_20_1_p_contour.jpg)  ![](../plots/run_20_1/run_20_1_U-Magnitude_streamlines.jpg)    
 
-- `run_110_1`:   
+## Improvements in Pressure, Density, and Y-Velocity with increasing resolution:  
 
-![](../plots/run_110_1/run_110_1_U-X_contour.jpg)  ![](../plots/run_110_1/run_110_1_U-Y_contour.jpg)  ![](../plots/run_110_1/run_110_1_p_contour.jpg)  ![](../plots/run_110_1/run_110_1_U-Magnitude_streamlines.jpg)     
+Note the upper shock turbulent features (the small waves), and how they resolve much more appropriately with higher resolution meshes.
 
-Time History plots for `run_110_1`:   
+### Pressure (from Run_10 to Run_32):  
 
-![](../plots/run_110_1/Time_U.jpg)  ![](../plots/run_110_1/Time_P.jpg) 
+![](../plots/run_10_64/run_10_64_P.jpg)  
+
+![](../plots/run_20_64/run_20_64_P.jpg)  
+
+![](../plots/run_32_64/run_32_64_P.jpg)  
+
+### Density:  
+
+![](../plots/run_10_64/run_10_64_rho.jpg)  
+
+![](../plots/run_20_64/run_20_64_rho.jpg)  
+
+![](../plots/run_32_64/run_32_64_rho.jpg)  
+
+### Y-velocity:  
+
+![](../plots/run_10_64/run_10_64_U_Y.jpg)  
+
+![](../plots/run_20_64/run_20_64_U_Y.jpg)  
+
+![](../plots/run_32_64/run_32_64_U_Y.jpg)  
+
+## Wall Distributions w.r.t Resolution Levels:  
+
+Pressure, density, x-velocity, y-velocity, and temperature are reported in that order. Note that the walls are traversed from left to right, first the horizontal wall prior to the step, then the vertical step wall (traversing upward), then the horizontal wall (the step itself), and finally the upper horizontal wall.  
+
+Convergence is shown through decreasing h (the spatial step-size).  
+
+
+### Pressure: 
+
+![](../plots/part_6/A_p.jpg)  ![](../plots/part_6/B_p.jpg)  ![](../plots/part_6/C_p.jpg)  ![](../plots/part_6/D_p.jpg)  
+
+
+### Density: 
+
+![](../plots/part_6/A_rho.jpg)  ![](../plots/part_6/B_rho.jpg)  ![](../plots/part_6/C_rho.jpg)  ![](../plots/part_6/D_rho.jpg)  
+
+
+### X-velocity: 
+
+![](../plots/part_6/A_u.jpg)  ![](../plots/part_6/B_u.jpg)  ![](../plots/part_6/C_u.jpg)  ![](../plots/part_6/D_u.jpg)  
+
+
+### Y-velocity: 
+
+![](../plots/part_6/A_v.jpg)  ![](../plots/part_6/B_v.jpg)  ![](../plots/part_6/C_v.jpg)  ![](../plots/part_6/D_v.jpg)  
+
+
+### Temperature: 
+
+![](../plots/part_6/A_temp.jpg)  ![](../plots/part_6/B_temp.jpg)  ![](../plots/part_6/C_temp.jpg)  ![](../plots/part_6/D_temp.jpg)  
+
+
+## Stagnation Pressure at Step  
+
+Note from the first two pressure plots, the pressure at the base of the step is slightly over 12Pa. The simulation measures a value of about 12.05Pa, which is in agreement with the theoretical calculation performed earlier.  
+
+
+
+
+ 
+
+
+ 
+ 
