@@ -37,35 +37,56 @@ Note the upper shock turbulent features (the small waves), and how they resolve 
 
 ## Wall Distributions w.r.t Resolution Levels:  
 
-Pressure, density, x-velocity, y-velocity, and temperature are reported in that order. Note that the walls are traversed from left to right, first the horizontal wall prior to the step, then the vertical step wall (traversing upward), then the horizontal wall (the step itself), and finally the upper horizontal wall.  
 
-Convergence is shown through decreasing h (the spatial step-size).  
+To examine the convergence of solution fields with a refinement of the mesh and associated reduction in grid spacing, plots of the pressure, temperature, fluid density, and x and y components of velocity were developed against the distance along four surfaces of interest, namely, the bottom wall, “A”, the vertical step wall, “B”, the bottom step wall, “C”, and the top wall, “D”. The purpose of generating these plots was to observe the underlying patterns, and  convergence of these solution fields to theoretical behavior.   
 
+### Wall A Pressure, Density, Temperature: 
 
-### Pressure: 
+![](../plots/part_6/A_p.jpg)  ![](../plots/part_6/A_rho.jpg)  ![](../plots/part_6/A_temp.jpg)    
 
-![](../plots/part_6/A_p.jpg)  ![](../plots/part_6/B_p.jpg)  ![](../plots/part_6/C_p.jpg)  ![](../plots/part_6/D_p.jpg)  
-
-
-### Density: 
-
-![](../plots/part_6/A_rho.jpg)  ![](../plots/part_6/B_rho.jpg)  ![](../plots/part_6/C_rho.jpg)  ![](../plots/part_6/D_rho.jpg)  
+In referencing figures 1-3 for the pressure, density, and temperature fields across the bottom wall, “A”, it is shown that the profiles are very similar, namely, the properties are approximately constant from the beginning of the wall to about 0.3 meters where they experience a sharp gradient as the flow moves across the normal shock wave boundary where theoretical behavior suggests that fluid density, pressure, and temperature increase rapidly across shock waves. These sharp gradients effectively confirm this expected behavior. Shortly after these sharp gradients (just removed from 0.3 meters from the beginning of the wall), the properties level off and nearly reach steady state. This behavior agrees with theory as the region downstream of the flow is isentropic (constant entropy) , and in this region, all thermodynamic properties are expected to remain relatively constant, or increase marginally with position. Furthermore, from all three plots we note that the solutions for the different spatial resolutions nearly overlap over [0,0.3 meters], and over [0.32,0.6 meters], while the largest differences in values are apparent over the normal shock wave region as expected. Additionally, in referencing the pressure plot, it is shown that the stagnation pressure approaches the theoretical value of approximately 12.06 Pa near the end of the bottom wall, where the simulation with the greatest refinement (h = 0.00625) most closely approximates this expected value.   
 
 
-### X-velocity: 
+### Wall B Pressure, Density, Temperature: 
 
-![](../plots/part_6/A_u.jpg)  ![](../plots/part_6/B_u.jpg)  ![](../plots/part_6/C_u.jpg)  ![](../plots/part_6/D_u.jpg)  
-
-
-### Y-velocity: 
-
-![](../plots/part_6/A_v.jpg)  ![](../plots/part_6/B_v.jpg)  ![](../plots/part_6/C_v.jpg)  ![](../plots/part_6/D_v.jpg)  
+![](../plots/part_6/B_p.jpg)  ![](../plots/part_6/B_rho.jpg)  ![](../plots/part_6/B_temp.jpg)    
 
 
-### Temperature: 
+In referencing figures 4-6, the pressure, density, and temperature solutions all exhibit very similar behavior with position across the vertical step wall. In particular, the profiles are approximately inverted parabolic relationships where the properties decrease from a maximum value at the stagnation point to a minimum value at the top of the step wall where an expansion fan is realized.  
 
-![](../plots/part_6/A_temp.jpg)  ![](../plots/part_6/B_temp.jpg)  ![](../plots/part_6/C_temp.jpg)  ![](../plots/part_6/D_temp.jpg)  
+### Wall C Pressure, Density, Temperature: 
 
+![](../plots/part_6/C_p.jpg)  ![](../plots/part_6/C_rho.jpg)  ![](../plots/part_6/C_temp.jpg)  
+
+
+In referencing figures 7-9, it is again shown that the three solution fields exhibit similar properties with respect to position across the horizontal step wall. As expected, there is a large gradient at approximately 0.7 meters from the left end of the wall where the flow exhibits shock reflection at the intersection of two oblique shock waves. 
+
+### Wall D Pressure, Density, Temperature: 
+
+![](../plots/part_6/D_p.jpg)  ![](../plots/part_6/D_rho.jpg)  ![](../plots/part_6/D_temp.jpg)  
+
+
+Shifting gears to figures 10-12, it is observed that the solution fields again remain relatively constant over 0.6 meters before increasing sharply where the flow exhibits its first shock reflection point. It then levels off between 0.7 meters and roughly 2.25 – 2.4 meters before experiencing a second sharp gradient as the flow encounters a second shock reflection point, before levelling off again. These behaviors thus agree with theoretical predictions.   
+
+
+### Velocity X and Y components along A,B,C,D :   
+
+![](../plots/part_6/A_u.jpg)  ![](../plots/part_6/A_v.jpg)  
+
+Transitioning now to the velocity field solutions, it is shown in figure 13 that the x-component of velocity remains constant before dropping off sharply at the shock wave where the Mach number decreases, and ultimately decreases linearly until the stagnation point. Figure 14 shows that the y-component of the velocity also begins at a constant value until reaching the shock wave where the velocity increases somewhat sharply before exhibiting a linear relationship. Interestingly, the solution with the largest spatial resolution exhibits the steepest gradient from the shockwave onwards, while the one with the smallest resolution approximately levels out.  
+
+
+![](../plots/part_6/B_u.jpg)  ![](../plots/part_6/B_v.jpg)  
+
+Looking at figure 15, it is shown that the x-component of velocity begins at a constant value before increasing roughly linearly. Interestingly, the spatial resolution greatly impacts the location where the velocity begins to increase. Conversely, figure 16 shows that the y-component of velocity increases roughly parabolically with position, and there is nearly an overlap in the solutions for each of the resolutions. These behaviors are reasonable given that as position along the vertical step wall is increased, the flow moves further from the shock wave region (where the velocity is small given low Mach Number).   
+
+![](../plots/part_6/C_u.jpg)  ![](../plots/part_6/C_v.jpg)   
+
+Looking now at figure 17, it is shown that the x-component of velocity increases rapidly at the beginning of the wall near the Mach Reflection region before levelling off, and then dropping sharply at the horizontal position corresponding to the first shock reflection point. It then increases from the first to the second shock reflection point. In referencing figure 18, it is shown that the y-component of velocity drops off significantly at the beginning of the wall before reaching negative values in what is likely a small recirculation region. It then levels off at approximately 0 around the first shock reflection point.   
+
+![](../plots/part_6/D_u.jpg)  ![](../plots/part_6/D_v.jpg)  
+
+In transitioning to figure 19, it is observed that the x-component of velocity drops off sharply at the point at the shockwave along the upper wall before gradually increasing to a local maximum at the second shock reflection point, and then dropping off sharply. Lastly, in looking at figure 20, it is observed that the y-component of velocity is approximately zero over the entire upper wall until reaching the second shock reflection point.   
 
 ## Stagnation Pressure at Step  
 
