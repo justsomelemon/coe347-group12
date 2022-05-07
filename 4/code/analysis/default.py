@@ -28,7 +28,7 @@ if __name__ == '__main__':
         # create a new 'OpenFOAMReader'
         a_foam = OpenFOAMReader(FileName=filename(run))
         a_foam.MeshRegions = ['internalMesh']
-        a_foam.CellArrays = ['T', 'U', 'p', 'rho']
+        a_foam.CellArrays = ['U', 'p']
 
         # get animation scene
         animationScene1 = GetAnimationScene()
@@ -149,52 +149,6 @@ if __name__ == '__main__':
         plot(run, "U_Z", renderView1)
         a_foamDisplay.SetScalarBarVisibility(renderView1, False)
 
-        # create a new 'Calculator'
-        calculator1 = Calculator(Input=a_foam)
-        # Properties modified on calculator1
-        calculator1.ResultArrayName = 'a'
-        calculator1.Function = 'sqrt(1.4*p/rho)'
-        calculator1.AttributeMode = 'Cell Data'
-        # show data in view
-        calculator1Display = Show(calculator1, renderView1)
-        # trace defaults for the display properties.
-        calculator1Display.Representation = 'Surface'
-        # set scalar coloring
-        ColorBy(calculator1Display, ('CELLS', 'a'))
-        aLUT = GetColorTransferFunction('a')
-        aLUT.ApplyPreset('erdc_blue2cyan_BW', True)
-        # Hide the scalar bar for this color map if no visible data is colored by it.
-        UpdateScalarBarsComponentTitle(aLUT, calculator1Display)
-        # rescale color and/or opacity maps used to include current data range
-        calculator1Display.RescaleTransferFunctionToDataRange(True, False)
-        # show color bar/color legend
-        calculator1Display.SetScalarBarVisibility(renderView1, True)
-        plot(run, "a", renderView1)
-        Hide(calculator1, renderView1)
-
-        # create a new 'Calculator'
-        calculator2 = Calculator(Input=a_foam)
-        # Properties modified on calculator1
-        calculator2.ResultArrayName = 'Mach'
-        calculator2.Function = 'mag(U)/sqrt(1.4*p/rho)'
-        calculator2.AttributeMode = 'Cell Data'
-        # show data in view
-        calculator2Display = Show(calculator2, renderView1)
-        # trace defaults for the display properties.
-        calculator2Display.Representation = 'Surface'
-        # set scalar coloring
-        ColorBy(calculator2Display, ('CELLS', 'Mach'))
-        aLUT = GetColorTransferFunction('Mach')
-        aLUT.ApplyPreset('erdc_blue2cyan_BW', True)
-        # Hide the scalar bar for this color map if no visible data is colored by it.
-        UpdateScalarBarsComponentTitle(aLUT, calculator2Display)
-        # rescale color and/or opacity maps used to include current data range
-        calculator2Display.RescaleTransferFunctionToDataRange(True, False)
-        # show color bar/color legend
-        calculator2Display.SetScalarBarVisibility(renderView1, True)
-        plot(run, "Mach", renderView1)
-        Hide(calculator2, renderView1)
-
         import slice
         slice1 = slice.sliceXY(a_foam, renderView1,
                                pLUT, uLUT, run, "U-glyphs")
@@ -210,8 +164,7 @@ if __name__ == '__main__':
 
     allruns = os.listdir(datapath)
     runs = []
-    denylist = ['run_126_1', 'run_126_2', 'run_126_4',
-                'run_126_8', 'run_126_16', 'run_126_32', 'run_126_64']
+    denylist = []
     for run in allruns:
         if 'run_' in run:
             runs.append(run)

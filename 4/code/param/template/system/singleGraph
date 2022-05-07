@@ -54,9 +54,15 @@ sets
         axis    xyz;
         // D XXX
     }
+    E
+    {
+        type    lineCell;
+        axis    xyz;
+        // E XXX
+    }
 );
 
-fields          ( p rho U T);
+fields          ( p U );
 
 
 // ************************************************************************* //

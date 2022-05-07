@@ -5,7 +5,7 @@
 # sh core.sh -p=<project #> -r="<specific tacc directory>" -u="<tacc username>" -i="<tacc_id_#>"
 
 FOLDER=$PWD/../
-PROJECT=3
+PROJECT=4
 REMOTE="openfoam/"
 USERNAME="as_tacc"
 

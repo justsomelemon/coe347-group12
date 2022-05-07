@@ -5,7 +5,7 @@ import paraview.servermanager as sm
 # disable automatic camera reset on 'Show'
 paraview.simple._DisableFirstRenderCameraReset()
 
-origin = [0.5, 0, 0]
+origin = [0.5, 0.5, 0]
 
 
 def sliceXY(a_foam, renderView1, pLUT, uLUT, run, number):
@@ -89,7 +89,7 @@ def velocityXYPlot(slice1, renderView1, pLUT, run):
     del glyph1Display
 
 
-def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
+def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=800):
     # info = sm.Fetch(slice1)
 
     pLUT.ApplyPreset('Viridis (matplotlib)', True)
@@ -147,7 +147,7 @@ def velocityXYContour(slice1, renderView1, pLUT, uLUT, run, ax=1, n=100):
     del contour1Display
 
 
-def pressureContour(slice1, renderView1, pLUT, uLUT, run, n=100):
+def pressureContour(slice1, renderView1, pLUT, uLUT, run, n=800):
     pLUT.ApplyPreset('Viridis (matplotlib)', True)
     uLUT.ApplyPreset('Viridis (matplotlib)', True)
     # info = sm.Fetch(slice1)
@@ -238,8 +238,8 @@ def velocityXYStream(a_foam, renderView1, pLUT, uLUT, run, ax=0, n=200):
     # show color bar/color legend
     streamTracer1Display.SetScalarBarVisibility(renderView1, True)
     # Properties modified on streamTracer1.SeedType
-    streamTracer1.SeedType.Point1 = [1.5, 4.0, 0]
-    streamTracer1.SeedType.Point2 = [1.5, -4.0, 0]
+    streamTracer1.SeedType.Point1 = [0.5, 0, 0]
+    streamTracer1.SeedType.Point2 = [0.5, 1.2, 0]
     # update the view to ensure updated data information
     renderView1.Update()
     # Rescale transfer function

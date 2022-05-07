@@ -7,17 +7,17 @@ import blockMeshDict as bmd
 
 # set up default parameters for each run.
 # assuming U, L = 1.
-U = 1
-L = 1
+U = 1.0
+L = 1.0
 
 TDREH = 40  # Time-Dependency Reynolds Threshold
 LFRETH = 60  # Laminar-Flow Reynolds Threshold
 
-pathNames = ["constant/thermophysicalProperties", "system/controlDict",
-             "system/decomposeParDict", "system/singleGraph"]
+pathNames = ["constant/transportProperties",
+             "system/controlDict", "system/decomposeParDict", "system/singleGraph"]
 bmdpath = "system/blockMeshDict"
-pinames = []
-keynames = ['f', 'cores']
+pinames = ['Re']
+keynames = ['f', 'e', 'w', 'H', 'a', 'b', 'cores']
 
 parampath = "param/"
 
@@ -41,25 +41,25 @@ def generateParameters(settings):
     # key defaults
 
     class key:
+        # NEEDS TO BE INT, mesh size would be nice to be inversely dependent on Re for laminar flow (sufficient but unnecessary condition),
+        # but that is not at all possible unless TACC simulates one plot for a week!
+        f = int(max(10, pi.Re/3))  # int(min(pi.Re, LFRETH))
 
-        f = 8
+        L = L
+        H = L
+        e = 0.05
+        w = 0.1
+
+        a = 0.05
 
         # not using a core to leave some headroom.
         if len(os.sched_getaffinity(0)) > 16:
             # this is TACC
-            coreMax = 64
-            cores = 64  # maximum is 64 for knl, atleast atm
+            coreMax = 192
+            cores = 192  # forcing 4-node on TACC
         else:
-            coreMax = min(len(os.sched_getaffinity(0)), 64)
-            cores = coreMax-1
-
-        dt = 0.02/f
-
-        # Same here : NEEDS TO BE INT
-        # these ar for feeding into the string in blockMeshDict_utils.py
-        AAA = np.array([3*f, 1*f, 1]).astype(str)
-        BBB = np.array([3*f, 4*f, 1]).astype(str)
-        CCC = np.array([12*f, 4*f, 1]).astype(str)
+            coreMax = min(len(os.sched_getaffinity(0)), 192)
+            cores = coreMax - 1
 
     # keys
 
@@ -72,13 +72,24 @@ def generateParameters(settings):
 
     def updateKey(f):
 
-        key.dt = 0.02/f
+        key.dt = 0.002/f
+        key.T0 = (key.L)/U
+        key.et = 6*key.T0
+        key.wt = 0.1
 
-        # Same here : NEEDS TO BE INT
-        # these ar for feeding into the string in blockMeshDict_utils.py
-        key.AAA = np.array([3*f, 1*f, 1]).astype(str)
-        key.BBB = np.array([3*f, 4*f, 1]).astype(str)
-        key.CCC = np.array([12*f, 4*f, 1]).astype(str)
+        try:
+            x = key.b
+        except Exception:
+            key.b = (key.L)/2
+
+        key.m = key.b - 0.5*key.a
+        key.n = key.b + 0.5*key.a
+        print(key.m)
+        print(key.n)
+        key.p = key.H + key.w
+        key.q = key.H + key.w + 2*key.e
+        key.r = key.L - key.n
+
     updateKey(key.f)
 
     # param defaults
@@ -112,14 +123,16 @@ def generateParameters(settings):
 
     params = \
         [
-
             {
+                'nu': 1/pi.Re,
             },
 
             {
+                'endTime': key.et,
+                'writeControl': 'runTime',
+                'writeInterval': key.wt,
                 'deltaT': key.dt,
             },
-
 
             {  # should not be changed if possible
                 'numberOfSubdomains': key.cores,
@@ -128,18 +141,21 @@ def generateParameters(settings):
 
             {
                 'A':
-                f"""\n\tstart   (0 0.00001 0);\n\tend     (0.6 0.00001 0);
+                f"""\n\tstart   ({str(key.m)} {str(key.p)} 0);\n\tend     ({str(key.n)} {str(key.p)} 0);
                     """,
                 'B':
-                f"""\n\tstart   (0.59999 0.00001 0);\n\tend     (0.59999 0.20001 0);
+                f"""\n\tstart   ({str(key.m)} {str(key.p)} 0);\n\tend     ({str(key.m)} {str(key.H)} 0);
                     """,
                 'C':
-                f"""\n\tstart   (0.59999 0.20001 0);\n\tend     (3 0.20001 0);
+                f"""\n\tstart   ({str(key.n)} {str(key.p)} 0);\n\tend     ({str(key.n)} {str(key.H)} 0);
                     """,
                 'D':
-                f"""\n\tstart   (0 0.99999 0);\n\tend     (3 0.99999 0);
-                    """
-            }
+                f"""\n\tstart   ({str(key.m)} {str(key.H)} 0);\n\tend     ({str(key.n)} {str(key.H)} 0);
+                    """,
+                'E':
+                f"""\n\tstart   ({str(key.b)} {str(key.H)} 0);\n\tend     ({str(key.b)} 0 0);
+                    """,
+            },
 
         ]
 
@@ -159,11 +175,10 @@ def cpy(SRC_DIR, TARG_DIR):
 
 def _replace(txt: str, params, replaceval='XXX'):
     lines = txt.split('\n')
-    for p in params:
-        for i in range(len(lines)):
-            line = lines[i]
-            if p in line:
-                lines[i] = line.replace(replaceval, str(params[p]))
+    for p, i in itertools.product(params, range(len(lines))):
+        line = lines[i]
+        if p in line:
+            lines[i] = line.replace(replaceval, str(params[p]))
     return '\n'.join(lines)
     # for p in params:
     #     txt = txt.replace(replaceval, p.value)

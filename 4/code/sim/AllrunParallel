@@ -9,7 +9,7 @@ runApplication checkMesh # check the mesh
 
 runApplication decomposePar # decompose the domain
 
-runParallel rhoCentralFoam # run the solver 
+runParallel icoFoam # run the solver 
 
 # runApplication reconstructPar # reconstruct the solution
 
