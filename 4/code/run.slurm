@@ -7,13 +7,17 @@
 #SBATCH -o ofo.%j       # Name of stdout output file
 #SBATCH -e ofe.%j       # Name of stderr error file
 
-### #SBATCH -p normal          # Queue (partition) name
+#SBATCH -p normal          # Queue (partition) name
 ### #SBATCH -p development          # Queue (partition) name
-#SBATCH -p skx-dev          # Queue (partition) name
+### #SBATCH -p skx-dev          # Queue (partition) name
+
+### #SBATCH -N 4               # Total # of nodes
+### #SBATCH -n 48             # Total # of mpi tasks
+### #SBATCH -t 2:00:00        # Run time (hh:mm:ss)
 
 #SBATCH -N 4               # Total # of nodes
-#SBATCH -n 48             # Total # of mpi tasks
-#SBATCH -t 2:00:00        # Run time (hh:mm:ss)
+#SBATCH -n 64             # Total # of mpi tasks
+#SBATCH -t 4:00:00        # Run time (hh:mm:ss)
 
 ### #SBATCH -d=afterok:9464105
 
@@ -28,11 +32,13 @@ pwd
 date
 
 echo "[+] RUN : MODULE LOAD." 
-export OMP_NUM_THREADS=96
+export OMP_NUM_THREADS=272
 module purge
 module load intel/18.0.2  libfabric/1.7.0  impi/18.0.2 
 module load python3
 module load openfoam/7.0
+module load ooops
+set_io_param 0 high
 module list
 echo "[+] RUN : SLURM RUN." 
 sh runTACC.sh

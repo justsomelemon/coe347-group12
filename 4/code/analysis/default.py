@@ -173,7 +173,7 @@ if __name__ == '__main__':
         try:
             foamfile = datapath+run+"/_.foam"
             # print(foamfile)
-            if os.path.isfile(foamfile) and run not in denylist:
+            if os.path.isfile(foamfile) and run not in denylist and run not in os.listdir(plotdir):
                 runDefaultProcessing(run)
         except:
             print("Run {} does not have plottable information.".format(run))

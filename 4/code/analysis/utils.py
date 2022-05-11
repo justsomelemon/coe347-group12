@@ -10,7 +10,7 @@ def makedir(run): return os.system("mkdir -p "+plotdir+run+"/ ")
 def filename(run): return datapath+run+'/_.foam'
 
 
-def plotpath(run, number): return plotdir+run+"/"+run+'_'+number+'.jpg'
+def plotpath(run, number): return plotdir+run+"/"+number+'.jpg'
 
 
 def plotpath2(run, folder, name):

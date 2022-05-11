@@ -55,8 +55,8 @@ def generateParameters(settings):
         # not using a core to leave some headroom.
         if len(os.sched_getaffinity(0)) > 16:
             # this is TACC
-            coreMax = 192
-            cores = 192  # forcing 4-node on TACC
+            coreMax = 256
+            cores = 256  # forcing 4-node on TACC
         else:
             coreMax = min(len(os.sched_getaffinity(0)), 192)
             cores = coreMax - 1
@@ -74,7 +74,7 @@ def generateParameters(settings):
 
         key.dt = 0.002/f
         key.T0 = (key.L)/U
-        key.et = 6*key.T0
+        key.et = 60*key.T0
         key.wt = 0.1
 
         try:
@@ -89,6 +89,16 @@ def generateParameters(settings):
         key.p = key.H + key.w
         key.q = key.H + key.w + 2*key.e
         key.r = key.L - key.n
+
+        pczn = 100000
+        key.m = int(key.m * pczn)/pczn
+        key.n = int(key.n * pczn)/pczn
+        key.p = int(key.p * pczn)/pczn
+        key.q = int(key.q * pczn)/pczn
+        key.r = int(key.r * pczn)/pczn
+        key.e = int(key.e * pczn)/pczn
+        key.a = int(key.a * pczn)/pczn
+        key.w = int(key.w * pczn)/pczn
 
     updateKey(key.f)
 
@@ -121,6 +131,7 @@ def generateParameters(settings):
             factors.append(1)
         return f"{int(factors[0])} {int(factors[1])}"
 
+    eps = 0.0001
     params = \
         [
             {
@@ -141,19 +152,19 @@ def generateParameters(settings):
 
             {
                 'A':
-                f"""\n\tstart   ({str(key.m)} {str(key.p)} 0);\n\tend     ({str(key.n)} {str(key.p)} 0);
+                f"""\n\tstart   ({(key.m+eps):.6f} {(key.p-eps):.6f} 0);\n\tend     ({(key.n-eps):.6f} {(key.p-eps):.6f} 0);
                     """,
                 'B':
-                f"""\n\tstart   ({str(key.m)} {str(key.p)} 0);\n\tend     ({str(key.m)} {str(key.H)} 0);
+                f"""\n\tstart   ({(key.m+eps):.6f} {(key.p-eps):.6f} 0);\n\tend     ({(key.m+eps):.6f} {(key.H+eps):.6f} 0);
                     """,
                 'C':
-                f"""\n\tstart   ({str(key.n)} {str(key.p)} 0);\n\tend     ({str(key.n)} {str(key.H)} 0);
+                f"""\n\tstart   ({(key.n-eps):.6f} {(key.p-eps):.6f} 0);\n\tend     ({(key.n-eps):.6f} {(key.H+eps):.6f} 0);
                     """,
                 'D':
-                f"""\n\tstart   ({str(key.m)} {str(key.H)} 0);\n\tend     ({str(key.n)} {str(key.H)} 0);
+                f"""\n\tstart   ({(key.m+eps):.6f} {(key.H+eps):.6f} 0);\n\tend     ({(key.n-eps):.6f} {(key.H+eps):.6f} 0);
                     """,
                 'E':
-                f"""\n\tstart   ({str(key.b)} {str(key.H)} 0);\n\tend     ({str(key.b)} 0 0);
+                f"""\n\tstart   ({(key.b+eps):.6f} {(key.H+eps):.6f} 0);\n\tend     ({(key.b+eps):.6f} 0 0);
                     """,
             },
 

@@ -6,7 +6,7 @@
 
 FOLDER=$PWD/../
 PROJECT=4
-REMOTE="openfoam/"
+REMOTE="openfoam2/"
 USERNAME="as_tacc"
 
 for i in "$@"; do
@@ -57,31 +57,97 @@ folder="${FOLDER}""${PROJECT}"/code
 files="${folder}/runTACC.sh ${folder}/run.slurm ${folder}/analyze.sh ${folder}/param/ ${folder}/sim/ ${folder}/analysis/"
 remote="${USERNAME}"@stampede2.tacc.utexas.edu
 
-# echo "[-] INITALIZE : SSH Directories." 
-# ssh -tt "${remote}" << EOF 
-#  cdw
-#  mkdir -p "${REMOTE}"code 
-#  mkdir -p "${REMOTE}"code/analysis/
-#  mkdir -p "${REMOTE}"code/data/
-#  mkdir -p "${REMOTE}"code/param/
-#  mkdir -p "${REMOTE}"code/sim/
-#  mkdir -p "${REMOTE}"plots/
-#  exit
-# EOF
+echo "[-] INITALIZE : SSH Directories." 
+ssh -tt "${remote}" << EOF 
+ cds
+ mkdir -p "${REMOTE}"code 
+ mkdir -p "${REMOTE}"code/analysis/
+ mkdir -p "${REMOTE}"code/data/
+ mkdir -p "${REMOTE}"code/param/
+ mkdir -p "${REMOTE}"code/sim/
+ mkdir -p "${REMOTE}"plots/
+ exit
+EOF
 
 echo ""
 
 echo "[-] INITALIZE : SCP files." 
-scp -r ${files} "${remote}":\$WORK/"${REMOTE}"code/
+scp -r ${files} "${remote}":\$SCRATCH/"${REMOTE}"code/
 echo ""
 echo "[-] RUN : TACC." 
 ssh -tt "${remote}" << EOF 
-cdw
+cds
 cd "${REMOTE}"code
 cd sim/
 chmod +x *
 cd ../
+sleep 10
 sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
+sbatch run.slurm
+sleep 5
 EOF
 
 
@@ -101,8 +167,8 @@ echo ""
 read -p "[?] Would you like to continue? Only do so once job has completed!"
 
 echo "[-] COPYBACK : SCP files." 
-scp -r "${remote}":\$WORK/"${REMOTE}"code/data/ "${folder}"/
-scp -r "${remote}":\$WORK/"${REMOTE}"plots/ "${FOLDER}""${PROJECT}"/
+scp -r "${remote}":\$SCRATCH/"${REMOTE}"code/data/ "${folder}"/
+scp -r "${remote}":\$SCRATCH/"${REMOTE}"plots/ "${FOLDER}""${PROJECT}"/
 echo ""
 echo "[|] COMPLETE -\\\\\\\\-=||"
 
