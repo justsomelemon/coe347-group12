@@ -55,8 +55,8 @@ def generateParameters(settings):
         # not using a core to leave some headroom.
         if len(os.sched_getaffinity(0)) > 16:
             # this is TACC
-            coreMax = 256
-            cores = 256  # forcing 4-node on TACC
+            coreMax = 8
+            cores = 8  # forcing 2-process on TACC
         else:
             coreMax = min(len(os.sched_getaffinity(0)), 192)
             cores = coreMax - 1
@@ -72,7 +72,7 @@ def generateParameters(settings):
 
     def updateKey(f):
 
-        key.dt = 0.002/f
+        key.dt = 0.008/f
         key.T0 = (key.L)/U
         key.et = 60*key.T0
         key.wt = 0.1
