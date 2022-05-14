@@ -3,3 +3,35 @@
 ```{r, include=FALSE}
 #knitr::write_bib(c('knitr', 'rmarkdown', 'jpeg', 'R.utils', 'animation'), 'packages.bib')
 ```
+
+# Appendix {.unnumbered}  
+
+## Mesh Images
+
+### Mesh Images for the Low Reynolds simulations (same order)  
+
+![](../plots/run_5_10_005_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_10_005_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_10_050_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_10_050_01/MESH2.jpg){width=80% height=40%}  
+![](../plots/run_10_10_005_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_10_005_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_10_050_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_10_050_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_200_005_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_200_005_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_200_050_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_200_050_01/MESH2.jpg){width=80% height=40%}  
+![](../plots/run_10_200_005_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_200_005_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_200_050_005/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_10_200_050_01/MESH2.jpg){width=80% height=40%}  
+
+
+### Mesh Images for the High Reynolds simulations (same order)  
+
+![](../plots/run_3_1000_050_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_1000_050_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_3_10000_050_01/MESH2.jpg){width=80% height=40%} 
+![](../plots/run_5_10000_050_01/MESH2.jpg){width=80% height=40%}  
+

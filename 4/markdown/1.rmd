@@ -1,59 +1,76 @@
 # Mesh Assembly
 
-We assemble a set of preliminary meshes for simulations with Reynolds number 20 and 110, consisting of an inner cylindrical segment and outer rectangular segment as follows. The following mesh schematics list dimension parameters and block configuration, courtesy of Dr.Fabrizio Bisetti, UT Austin.  
+We assemble a 2D mesh template as below, with the following parameters, all lengths nondimensionalized in terms of dimension $L$:  
 
-## Mesh Schema  
+mutable: wall thickness $w$, window width $a$,   
+immutable: window location $b=0.5$, cavity height $H=1$, cavity width $L=1$, and free-stream width $2e=0.1$.  
+  
 
-![](../plots/5/dim.jpg){width=50% height=25%}  
+![](../plots/Mesh/B+V.png){width=50% height=25%}  
 
-The blocks and block vertices are as follows. The blue vertices denote the other Z-plane.  
+Two sets of simulations are performed, one for the low Reynolds ($Re$) numbers of 10 and 200, which will be shown to be steady, and another for $Re=1000, 10000$.  
 
-![](../plots/5/block.jpg){width=50% height=25%}  
+Each mesh also has a corresponding refinement, which is described by the $meshFactor$ parameter, representing the refinement in each dimension.  
 
-![](../plots/5/vert.jpg){width=50% height=25%}  
 
-The edges are defined by listing points $P$ as follows.  
 
-![](../plots/5/arc.jpg){width=50% height=25%} 
+Full lists are available below.
 
-A symmetry plane is defined in OpenFoam s.t. boundary effects do not significantly affect results. So the resulting simulation will look as below.  
+## Meshes for the Low Reynolds simulations
 
-![](../plots/5/sp.jpg){width=25% height=25%}  
 
-For all the meshes unless otherwise noted, the parameters are as follows, with units in meters for all dimensions on the diagram, and Re denoting the Reynolds number.
+```{r, tidy=FALSE}
+data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
+'meshfactor/Reynolds-Number/window-width:a/wall-thickness:w
+5/10/0.05/0.05
+5/10/0.05/0.1
+5/10/0.50/0.05
+5/10/0.50/0.1
+10/10/0.05/0.05
+10/10/0.05/0.1
+10/10/0.50/0.05
+10/10/0.50/0.1
+5/200/0.05/0.05
+5/200/0.05/0.1
+5/200/0.50/0.05
+5/200/0.50/0.1
+10/200/0.05/0.05
+10/200/0.05/0.1
+10/200/0.50/0.05
+10/200/0.50/0.1'
+)
+knitr::kable((data2), booktabs = TRUE,
+caption = '')
+```
 
-- f : blockMeshFactor (decreases cell dimensions in each direction by this factor), set by default : `int(max(10, Re/3))`
-- R : cylinder radius, default: `1/2`
-- R2 : ring block outer radius, default: `3/2`
-- H : height, default: `4`
-- F : forward distance, default: `4`
-- W : wake (backward) distance, default: `4 + Re*(1/15)`
-- K : +/- distance in Z-axis --- mostly irrelevant for anything in this project, default: `4`
+## Meshes for the High Reynolds simulations
 
-The preliminary meshes `run_20_1` and `run_110_1` simply follow the default settings.  
 
-## Mesh Files  
+```{r, tidy=FALSE}
+data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
+'meshfactor/Reynolds-Number/window-width:a/wall-thickness:w
+3/1000/0.50/0.1
+5/1000/0.50/0.1
+3/10000/0.50/0.1
+5/10000/0.50/0.1'
+)
+knitr::kable((data2), booktabs = TRUE,
+caption = '')
+```
  
-BlockMeshDict files are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_1/system/blockMeshDict">run_20_1</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_1/system/blockMeshDict">run_110_1</a>,
-blockMesh logs are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_1/log.blockMesh">run_20_1</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_1/log.blockMesh">run_110_1</a>,  
-checkMesh logs are available here: <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_20_1/log.checkMesh">run_20_1</a> and <a href="https://github.com/akhilsadam/coe347-group12/blob/main/2/code/data/run_110_1/log.checkMesh">run_110_1</a>.  
 
+BlockMeshDict and similar files are available at <a href="https://github.com/akhilsadam/coe347-group12/tree/main/4/code/param">the repository</a>.  
 
-## Mesh Figures  
+## Mesh Images  
 
-Mesh images are shown here, for detail comparision. We will show the `run_20_1` mesh first and then the `run_110_1` mesh.
-
-- `run_20_1`:  
-
-![](../plots/run_20_1/run_20_1_MESH.jpg) ![](../plots/run_20_1/run_20_1_MESH2.jpg)  
-
-- `run_110_1`:  
-
-![](../plots/run_110_1/run_110_1_MESH.jpg) ![](../plots/run_110_1/run_110_1_MESH2.jpg)  
-
-
-
-
-
+A couple mesh samples are shown here; see the appendix for all images.  
 
  
+meshFactor, Re, windowWidth, wallThickness=5, 10, 0.05, 0.05:  
+![](../plots/run_5_10_005_005/MESH2.jpg){width=100% height=50%}  
+
+meshFactor, Re, windowWidth, wallThickness=10, 200, 0.5, 0.1: 
+![](../plots/run_10_200_050_01/MESH2.jpg){width=100% height=50%}  
+
+
+Now that the mesh resolutions can be seen as adequate, we will move to results.  
