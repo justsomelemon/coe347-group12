@@ -14,7 +14,7 @@ TDREH = 40  # Time-Dependency Reynolds Threshold
 LFRETH = 60  # Laminar-Flow Reynolds Threshold
 
 pathNames = ["constant/transportProperties",
-             "system/controlDict", "system/decomposeParDict", "system/singleGraph"]
+             "system/controlDict", "system/decomposeParDict", "system/singleGraph", "system/probes"]
 bmdpath = "system/blockMeshDict"
 pinames = ['Re']
 keynames = ['f', 'e', 'w', 'H', 'a', 'b', 'cores']
@@ -168,6 +168,9 @@ def generateParameters(settings):
                     """,
             },
 
+            {
+                'probeLocations': f'\n    ({(key.n-eps-0.025):.6f} 0.95 0)\n    ({(key.n-eps+0.025):.6f} 0.95 0)',
+            },
         ]
 
     # and params
