@@ -53,5 +53,5 @@ otherwise you can remove it.-->
 ::: {#refs}
 :::
 
-# Appendix {-}
+# Acknowledgements {-}
 Thank you so much for reading this work!

@@ -4,7 +4,7 @@
 #knitr::write_bib(c('knitr', 'rmarkdown', 'jpeg', 'R.utils', 'animation'), 'packages.bib')
 ```
 
-# Appendix {.unnumbered}  
+# Appendix {-}  
 
 ## Mesh Images
 
