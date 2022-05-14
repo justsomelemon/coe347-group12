@@ -3,3 +3,4 @@
 For severe storms, it is widely known that puncture damage is the primary cause of failure for most buildings and aircraft. Once a puncture has been created, the resultant pressure differential can cause fast inflow and damage to the interior. We seek to study this inflow, and stresses near the opening walls, which can cause structural issues leading to collapse of one or more walls.  
 
 Most relevant studies use incredibly large amounts of computational power, due to the large scale of the problem (Reynolds numbers for tornadoes and hurricanes can easily start in the millions). We seek to show the applicability of lower Reynolds simulations to higher Reynolds situations, since the general large-scale flow structure remains the same.  
+
