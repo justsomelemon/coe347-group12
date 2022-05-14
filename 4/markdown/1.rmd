@@ -1,4 +1,4 @@
-# Mesh Assembly : Preliminaries
+# Mesh Assembly
 
 We assemble a set of preliminary meshes for simulations with Reynolds number 20 and 110, consisting of an inner cylindrical segment and outer rectangular segment as follows. The following mesh schematics list dimension parameters and block configuration, courtesy of Dr.Fabrizio Bisetti, UT Austin.  
 

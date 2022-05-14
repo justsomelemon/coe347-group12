@@ -1,4 +1,4 @@
-title: "OpenFoam Assignment | The Lid-Driven Cavity"
+title: "A Flow-Driven Cavity as an Air Cycling Model for Window Flow"
 author:
   - name: Justin Campbell
     address: Aerospace Department, University of Texas at Austin
@@ -6,12 +6,8 @@ author:
   - name: Amanda Hiett
     address: Aerospace Department, University of Texas at Austin
     email: hiett.mandy@utexas.edu - amh7427
-  - name: Archithaa Mohan
-    address: Aerospace Department, University of Texas at Austin
-    email: archithaamohan@utexas.edu - am87867
   - name: Akhil Sadam
     address: Aerospace Department, University of Texas at Austin
     email: akhil.sadam@utexas.edu - as97822
-keywords: [computational fluid dynamics, CFD, incompressible, Paraview, R, Python, coe347, spring 2022]
-abstract: |
-  --SAMPLE ABSTRACT--
+keywords: [computational fluid dynamics, CFD, incompressible, Paraview, R, Python, coe347, spring 2022, window, building, tornado, high, reynolds, unsteady, steady, stress, strain, rate, mixing, volumetric, flow]
+abstract: A lid-driven cavity is flow-driven to describe stress on and circulation inside buildings and small insect-to-UAV-size aircraft due to open windows or sidewall punctures. The transition between steady & unsteady flow is also roughly bounded, by investigating the Reynolds number at 4 values between 10 to 10^4. A sparse simulation of low-speed and much higher-speed incompressible flows is undertaken, estimating feature shapes at the minimum computational cost.

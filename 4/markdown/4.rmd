@@ -1,52 +1,26 @@
-# Unsteady Flow and Strouhal Number  
-
-We now use the simulations `run_110_3`, `run_110_4`, and `run_110_2` to calculate an approximate Strouhal number: $St=\frac{f}{U/D}={fcn}(Re)$.  
-
-The sole difference between these runs is the blockMeshFactor parameter, which increases block density and decreases timestep.  
-
-Probes were placed at $(x,y)=(5.5,\pm0.5)$, and a Fourier Transform of the nondimensionalized y-velocity was taken with respect to nondimensionalized time, s.t. the highest amplitude resultant frequency is the Strouhal number. Agreement between Strouhal numbers calculated for each probe was verified.
-
-A table of results follows:  
-
-- Mesh  |  St    | timestep 
-- 110_3  0.180995  0.000666667;  
-- 110_2  0.182648  0.000555556;  
-- 110_4  0.181818  0.000444444;  
-
-So clearly the approximations converge to a Strouhal number around 0.182.  
-
-Plots for a probe from each mesh follow, along with the Fourier Transform.  
-
-- Mesh 110_3  
-
-![](../plots/8/Uyrun3probe0.jpg){width=50% height=25%}  
-
-![](../plots/8/FFTrun3probe0.jpg){width=50% height=25%}   
-
-- Mesh 110_2  
+# High Reynolds Number - Part 1  
 
 
-![](../plots/8/Uyrun2probe0.jpg){width=50% height=25%}  
+## General Solution Form
 
-![](../plots/8/FFTrun2probe0.jpg){width=50% height=25%}  
+- show basic solution images here for both Re and make general arguments
 
-- Mesh 110_4  
+## Strouhal Number and Vortex Shedding
 
+- FFT plots
+- STFT plots
+- table of values for Strouhal
 
-![](../plots/8/Uyrun4probe0.jpg){width=50% height=25%}  
+## Volumetric Flow Rate and Mixing
 
-![](../plots/8/FFTrun4probe0.jpg){width=50% height=25%}  
-
-
-Looking at separation on Mesh 110_2, we see that it occurs at about 117 degrees, as predicted by Park et. al. (Numerical Solutions of Flow Past a Circular Cylinder at Reynolds Numbers up to 160, 1203).  
-
-
-![](../plots/run_110_2/run_110_2_U.jpg) 
+- plots
+- generic argument / example for UAV and 
  
+## Window Wall Strain Rate
 
-The referenced plot from Park et. al.:  
-  
+### T = 1.47 (unsteady startup)
 
-![](../plots/8/Park.jpg)  
+### T = 60  (steady-state for large-scales of flow)
 
+### Maximum Strain Rate over Time  
 
