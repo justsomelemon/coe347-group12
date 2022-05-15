@@ -1,26 +1,57 @@
-# High Reynolds Number - Part 1  
+# Low Reynolds Number  
 
 
 ## General Solution Form
 
-- show basic solution images here for both Re and make general arguments
+- show basic solution images here
 
-## Strouhal Number and Vortex Shedding
+## Vortice Positions
+```{r, tidy=FALSE}
+data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
+'meshfactor/Reynolds/window(a)/wall(w)/Vortex Center Location along Y
+5/10/0.50/01/0.605
+10/100/0.05/01/0.6425
+5/200/0.05/01/0.975
+10/50/0.05/01/0.6075
+5/50/0.05/01/0.965
+10/100/0.05/005/0.8575
+10/10/0.05/01/0.965
+10/200/0.50/01/0.8325
+5/50/0.50/01/0.685
+10/100/0.50/005/0.7425
+3/10000/0.50/01/0.641667
+3/1000/0.50/01/0.691667
+10/200/0.05/005/0.8675
+10/200/0.05/01/0.6875
+5/100/0.50/01/0.775
+5/50/0.05/005/0.835
+5/200/0.50/005/0.765
+5/200/0.05/005/0.855
+5/50/0.50/005/0.655
+10/10/0.50/005/0.5725
+10/10/0.50/01/0.6075
+10/100/0.50/01/0.7825
+10/50/005/005/0.8525
+5/10000/050/01/0.595
+5/10/050/005/0.565
+10/200/050/005/0.7725
+5/10/005/005/0.835
+5/200/050/01/0.825
+5/1000/050/01/0.705
+10/50/050/005/0.6625
+5/10/005/01/0.965
+10/50/050/01/0.6875
+10/10/005/005/0.8525
+'
+)
+knitr::kable((data2), booktabs = TRUE,
+caption = '')
 
-- FFT plots
-- STFT plots
-- table of values for Strouhal
+## Window Wall Solution Profiles
 
-## Volumetric Flow Rate and Mixing
+- profiles for Left and Right
 
-- plots
-- generic argument / example for UAV and 
- 
-## Window Wall Strain Rate
 
-### T = 1.47 (unsteady startup)
+## Cavity Midline Solution Profile
 
-### T = 60  (steady-state for large-scales of flow)
-
-### Maximum Strain Rate over Time  
-
+- midline profiles
