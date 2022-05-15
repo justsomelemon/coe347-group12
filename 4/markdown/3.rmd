@@ -1,9 +1,56 @@
 # Low Reynolds Number  
 
+Note again all values are nondimensionalized - all lengths are in terms of $L$, the cavity length, all speeds in terms of $U$, the initial flow speed, and all times in terms of $\frac{L}{U}$.  
 
-## General Solution Form
+The pressure is in terms of $\frac{p}{\rho U^2}$.  
 
-- show basic solution images here
+
+## General Solution Form  
+
+We will now show the pressure, X-velocity, Y-velocity, and streamlines in sets of 4 by varying geometry along the following pattern. Contours are not shown due to their bias toward out-of-cavity portions and the coarse mesh will be omitted for brevity. Convergence studies will be done numerically afterward.    
+
+
+Pattern:  
+
+```{r, tidy=FALSE}
+data2 <- read.table(stringsAsFactors = FALSE, header = TRUE, sep="/", text =
+'window size a / wall thickness w
+0.05 / 0.05
+0.05 / 0.1
+0.50 / 0.05
+0.50 / 0.1'
+)
+knitr::kable((data2), booktabs = TRUE,
+caption = '')
+```
+
+### Re=10, Pressure
+
+![](../plots/run_10_10_005_005/P.jpg){width=40% height=20%}
+![](../plots/run_10_10_005_01/P.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_005/P.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_01/P.jpg){width=40% height=20%}  
+
+### Re=10, X-velocity
+
+![](../plots/run_10_10_005_005/U_X.jpg){width=40% height=20%}
+![](../plots/run_10_10_005_01/U_X.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_005/U_X.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_01/U_X.jpg){width=40% height=20%}  
+
+### Re=10, Y-velocity
+
+![](../plots/run_10_10_005_005/U_Y.jpg){width=40% height=20%}
+![](../plots/run_10_10_005_01/U_Y.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_005/U_Y.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_01/U_Y.jpg){width=40% height=20%}  
+
+### Re=10, Streamlines
+
+![](../plots/run_10_10_005_005/U-Magnitude_streamlines.jpg){width=40% height=20%}
+![](../plots/run_10_10_005_01/U-Magnitude_streamlines.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_005/U-Magnitude_streamlines.jpg){width=40% height=20%}
+![](../plots/run_10_10_050_01/U-Magnitude_streamlines.jpg){width=40% height=20%}  
 
 ## Vortice Positions
 
